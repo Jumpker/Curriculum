@@ -1,3 +1,4 @@
+这个README应该是树莓派插件的教程
 Put your Python files here.
 In your Python file, define functions with doctring that starts with "_mcp", 
 or, decorate them with "@mcpy", these functions will then be available in Minecraft as "p command".

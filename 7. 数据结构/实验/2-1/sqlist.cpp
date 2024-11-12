@@ -3,54 +3,54 @@
 #define MaxSize 50
 typedef char ElemType;
 typedef struct
-{	ElemType data[MaxSize];								//´æ·ÅË³Ğò±íµÄÔªËØ 
-	int length;											//Ë³Ğò±í³¤¶È 
-}SqList;												//ÉùÃ÷Ë³Ğò±íÀàĞÍ
+{	ElemType data[MaxSize];								//å­˜æ”¾é¡ºåºè¡¨çš„å…ƒç´  
+	int length;											//é¡ºåºè¡¨é•¿åº¦ 
+}SqList;												//å£°æ˜é¡ºåºè¡¨ç±»å‹
 /*void abc(int &k)
 {
 	k+=1;
 }*/
-void CreateList(SqList *&L,ElemType a[], int n)		//ÕûÌå½¨Á¢Ë³Ğò±í 
+void CreateList(SqList *&L,ElemType a[], int n)		//æ•´ä½“å»ºç«‹é¡ºåºè¡¨ 
 {	L = (SqList * )malloc(sizeof(SqList));
 	for (int i = 0; i<n; i++)
 		L -> data[i] = a[i];
 		L -> length = n;
  } 
 
-void InitList(SqList * &L)								//³õÊ¼»¯ÏßĞÔ±í 
-{	L = (SqList * )malloc(sizeof(SqList));				//·ÖÅä´æ·ÅÏßĞÔ±íµÄ¿Õ¼ä 
+void InitList(SqList * &L)								//åˆå§‹åŒ–çº¿æ€§è¡¨ 
+{	L = (SqList * )malloc(sizeof(SqList));				//åˆ†é…å­˜æ”¾çº¿æ€§è¡¨çš„ç©ºé—´ 
 	L -> length = 0;
  } 
  
- void DestoryList(SqList * &L)							//Ïú»ÙÏßĞÔ±í 
+ void DestoryList(SqList * &L)							//é”€æ¯çº¿æ€§è¡¨ 
  {
  	free(L);
  }
  
- bool ListEmpty(SqList * L)								//ÅĞ¶ÏÊÇ·ñÎª¿Õ±í 
+ bool ListEmpty(SqList * L)								//åˆ¤æ–­æ˜¯å¦ä¸ºç©ºè¡¨ 
  {
  	return(L -> length == 0);
   } 
   
-int ListLength(SqList * L)								//ÇóÏßĞÔ±í³¤¶È 
+int ListLength(SqList * L)								//æ±‚çº¿æ€§è¡¨é•¿åº¦ 
 {
 	return(L -> length);
 }
 
-void DispList(SqList * L)								//Êä³öÏßĞÔ±í
+void DispList(SqList * L)								//è¾“å‡ºçº¿æ€§è¡¨
 {	for (int i=0; i < L->length; i++)
 		printf("%c", L -> data[i]);
 	printf("\n"); 
  } 
  
-bool GetElem(SqList * L, int i, ElemType &e)			//ÇóÏßĞÔ±íÖĞµÚi¸öÔªËØÖµ
+bool GetElem(SqList * L, int i, ElemType &e)			//æ±‚çº¿æ€§è¡¨ä¸­ç¬¬iä¸ªå…ƒç´ å€¼
 {	if (i<1 || i>L-> length)
 		return false;
 	e = L->data[i-1];
 	return true;
  } 
  
-int LocateElem(SqList *L, ElemType e)					//²éÕÒµÚÒ»¸öÖµÓòÎªeµÄÔªËØĞòºÅ
+int LocateElem(SqList *L, ElemType e)					//æŸ¥æ‰¾ç¬¬ä¸€ä¸ªå€¼åŸŸä¸ºeçš„å…ƒç´ åºå·
 {	int i = 0;
 	while (i < L->length && L->data[i] != e)
 		i++;
@@ -60,7 +60,7 @@ int LocateElem(SqList *L, ElemType e)					//²éÕÒµÚÒ»¸öÖµÓòÎªeµÄÔªËØĞòºÅ
 		return i+1;
 }
 
-bool ListInsert(SqList * &L, int i, ElemType e)			//²åÈëµÚi¸öÔªËØ 
+bool ListInsert(SqList * &L, int i, ElemType e)			//æ’å…¥ç¬¬iä¸ªå…ƒç´  
 {	int j;
 	if(i<1 || i>L->length+1)
 		return false;
@@ -68,18 +68,18 @@ bool ListInsert(SqList * &L, int i, ElemType e)			//²åÈëµÚi¸öÔªËØ
 	for (j = L->length; j > i; j--)
 		L->data[j] = L->data[j-1]; 
 	L->data[i] = e;
-	L->length++;										//Ë³Ğò±í³¤¶È+1 
+	L->length++;										//é¡ºåºè¡¨é•¿åº¦+1 
 	return true;
  } 
  
-bool ListDelete(SqList * &L, int i, ElemType &e)		//É¾³ıµÚi¸öÔªËØ
+bool ListDelete(SqList * &L, int i, ElemType &e)		//åˆ é™¤ç¬¬iä¸ªå…ƒç´ 
 {	int j;
 	if (i<1 || i>L->length)
 		return false;
-	i--;												//½«Ë³Ğò±íÎ»Ğò×ª»¯ÎªdataÏÂ±ê
+	i--;												//å°†é¡ºåºè¡¨ä½åºè½¬åŒ–ä¸ºdataä¸‹æ ‡
 	e = L->data[i];
-	for (j = i; j < L->length-1; j++)					//½«data[i]Ö®ºóµÄÔªËØÇ°ÒÆ1Î»
+	for (j = i; j < L->length-1; j++)					//å°†data[i]ä¹‹åçš„å…ƒç´ å‰ç§»1ä½
 		L->data[j] = L->data[j+1];
-	L->length--;										//Ë³Ğò±í³¤¶È-1
+	L->length--;										//é¡ºåºè¡¨é•¿åº¦-1
 	return true;
  } 

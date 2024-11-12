@@ -7,22 +7,22 @@ typedef struct Node {
     struct Node* next;  
 } Node;  
   
-Node* tail = NULL; // ³õÊ¼»¯ÎªNULL£¬±íÊ¾¿ÕÁ´±í  
+Node* tail = NULL; // åˆå§‹åŒ–ä¸ºNULLï¼Œè¡¨ç¤ºç©ºé“¾è¡¨  
   
-// ³õÊ¼»¯¿ÕÁ´±í£¨´´½¨Ò»¸öÑÆ½Úµã£©  
+// åˆå§‹åŒ–ç©ºé“¾è¡¨ï¼ˆåˆ›å»ºä¸€ä¸ªå“‘èŠ‚ç‚¹ï¼‰  
 void init() {  
     Node* dummy = (Node*)malloc(sizeof(Node));  
-    dummy->data = 0; // ÑÆ½ÚµãµÄÊı¾İ¿ÉÒÔÊÇÈÎÒâµÄ  
-    dummy->next = dummy; // ×Ô»·±íÊ¾¿ÕÁ´±í  
+    dummy->data = 0; // å“‘èŠ‚ç‚¹çš„æ•°æ®å¯ä»¥æ˜¯ä»»æ„çš„  
+    dummy->next = dummy; // è‡ªç¯è¡¨ç¤ºç©ºé“¾è¡¨  
     tail = dummy;  
 }  
   
-// ¼ì²éÁ´±íÊÇ·ñÎª¿Õ  
+// æ£€æŸ¥é“¾è¡¨æ˜¯å¦ä¸ºç©º  
 bool isEmpty() {  
     return tail->next == tail;  
 }  
   
-// ÔÚÁ´±íÎ²²¿²åÈëĞÂ½Úµã  
+// åœ¨é“¾è¡¨å°¾éƒ¨æ’å…¥æ–°èŠ‚ç‚¹  
 void insert(int data) {  
     Node* newNode = (Node*)malloc(sizeof(Node));  
     newNode->data = data;  
@@ -31,36 +31,36 @@ void insert(int data) {
     tail = newNode;  
 }  
   
-// ´ÓÁ´±íÖĞ³ö¶Ó£¨É¾³ıÍ·½Úµã£©  
+// ä»é“¾è¡¨ä¸­å‡ºé˜Ÿï¼ˆåˆ é™¤å¤´èŠ‚ç‚¹ï¼‰  
 bool dequeue() {  
     if (isEmpty()) return false;  
   
-    Node* head = tail->next; // Í·½Úµã  
-    Node* newHead = head->next; // ÏÂÒ»¸ö½Úµã½«³ÉÎªĞÂµÄÍ·½Úµã  
+    Node* head = tail->next; // å¤´èŠ‚ç‚¹  
+    Node* newHead = head->next; // ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å°†æˆä¸ºæ–°çš„å¤´èŠ‚ç‚¹  
   
-    if (head == tail) { // Èç¹ûÁ´±íÖĞÖ»ÓĞÒ»¸ö½Úµã  
-        tail = NULL; // Á´±í±äÎª¿Õ  
+    if (head == tail) { // å¦‚æœé“¾è¡¨ä¸­åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹  
+        tail = NULL; // é“¾è¡¨å˜ä¸ºç©º  
     } else {  
-        tail->next = newHead; // ¸üĞÂÎ²½ÚµãµÄnextÖ¸ÏòĞÂµÄÍ·½Úµã  
+        tail->next = newHead; // æ›´æ–°å°¾èŠ‚ç‚¹çš„nextæŒ‡å‘æ–°çš„å¤´èŠ‚ç‚¹  
     }  
   
-    free(head); // ÊÍ·ÅÍ·½ÚµãµÄÄÚ´æ  
+    free(head); // é‡Šæ”¾å¤´èŠ‚ç‚¹çš„å†…å­˜  
   
-    // Èç¹ûÁ´±í²»Îª¿Õ£¬¸üĞÂtail£¨ËäÈ»ÔÚÕâ¸ö³ö¶Ó²Ù×÷ÖĞÍ¨³£²»ĞèÒª£¬ÒòÎªtailÔÚÖ»ÓĞÒ»¸ö½ÚµãÊ±ÒÑ¾­¸üĞÂÎªNULL£©  
-    // µ«ÎªÁË±£³ÖÒ»ÖÂĞÔ£¬ÎÒÃÇ¿ÉÒÔ¼ì²é²¢¸üĞÂ£¨ËäÈ»ÔÚÕâ¸öÌØ¶¨³¡¾°ÏÂÊÇ¶àÓàµÄ£©  
+    // å¦‚æœé“¾è¡¨ä¸ä¸ºç©ºï¼Œæ›´æ–°tailï¼ˆè™½ç„¶åœ¨è¿™ä¸ªå‡ºé˜Ÿæ“ä½œä¸­é€šå¸¸ä¸éœ€è¦ï¼Œå› ä¸ºtailåœ¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹æ—¶å·²ç»æ›´æ–°ä¸ºNULLï¼‰  
+    // ä½†ä¸ºäº†ä¿æŒä¸€è‡´æ€§ï¼Œæˆ‘ä»¬å¯ä»¥æ£€æŸ¥å¹¶æ›´æ–°ï¼ˆè™½ç„¶åœ¨è¿™ä¸ªç‰¹å®šåœºæ™¯ä¸‹æ˜¯å¤šä½™çš„ï¼‰  
     if (!isEmpty()) {  
-        // Êµ¼ÊÉÏ£¬tail²»ĞèÒª¸üĞÂ£¬ÒòÎªtailÊ¼ÖÕÖ¸Ïò×îºóÒ»¸ö½Úµã£¬¶ø³ö¶Ó²Ù×÷²»Ó°ÏìËü£¨³ı·ÇÁ´±í±äÎª¿Õ£©  
-        // µ«ÎªÁËÑİÊ¾£¬ÎÒÃÇ¿ÉÒÔÔÙ´ÎÈ·ÈÏtailµÄ×´Ì¬£¨ËäÈ»ÔÚÕâ¸öº¯ÊıÄÚ²¿Ã»ÓĞ±ØÒª£©  
-        tail = newHead->next == tail ? newHead : tail; // ÕâĞĞ´úÂëÊµ¼ÊÉÏÔÚ´ó¶àÊıÇé¿öÏÂÊÇ¶àÓàµÄ£¬ÒòÎªtail²»»á¸Ä±ä  
+        // å®é™…ä¸Šï¼Œtailä¸éœ€è¦æ›´æ–°ï¼Œå› ä¸ºtailå§‹ç»ˆæŒ‡å‘æœ€åä¸€ä¸ªèŠ‚ç‚¹ï¼Œè€Œå‡ºé˜Ÿæ“ä½œä¸å½±å“å®ƒï¼ˆé™¤éé“¾è¡¨å˜ä¸ºç©ºï¼‰  
+        // ä½†ä¸ºäº†æ¼”ç¤ºï¼Œæˆ‘ä»¬å¯ä»¥å†æ¬¡ç¡®è®¤tailçš„çŠ¶æ€ï¼ˆè™½ç„¶åœ¨è¿™ä¸ªå‡½æ•°å†…éƒ¨æ²¡æœ‰å¿…è¦ï¼‰  
+        tail = newHead->next == tail ? newHead : tail; // è¿™è¡Œä»£ç å®é™…ä¸Šåœ¨å¤§å¤šæ•°æƒ…å†µä¸‹æ˜¯å¤šä½™çš„ï¼Œå› ä¸ºtailä¸ä¼šæ”¹å˜  
     }  
   
     return true;  
 }  
   
-// ±éÀúÁ´±í²¢´òÓ¡½ÚµãÊı¾İ  
+// éå†é“¾è¡¨å¹¶æ‰“å°èŠ‚ç‚¹æ•°æ®  
 void traverse() {  
     if (isEmpty()) {  
-        printf("Á´±íÎª¿Õ!\n");  
+        printf("é“¾è¡¨ä¸ºç©º!\n");  
         return;  
     }  
   
@@ -68,11 +68,11 @@ void traverse() {
     do {  
         printf("%d ", current->data);  
         current = current->next;  
-    } while (current != tail->next); // Ñ­»·Ö±µ½»Øµ½Í·½Úµã£¨×¢ÒâÌõ¼şÊÇcurrent != tail->next£©  
+    } while (current != tail->next); // å¾ªç¯ç›´åˆ°å›åˆ°å¤´èŠ‚ç‚¹ï¼ˆæ³¨æ„æ¡ä»¶æ˜¯current != tail->nextï¼‰  
     printf("\n");  
 }  
   
-// ÊÍ·ÅÁ´±íµÄËùÓĞ½Úµã£¨ÔÚ³ÌĞò½áÊøÊ±µ÷ÓÃ£©  
+// é‡Šæ”¾é“¾è¡¨çš„æ‰€æœ‰èŠ‚ç‚¹ï¼ˆåœ¨ç¨‹åºç»“æŸæ—¶è°ƒç”¨ï¼‰  
 void freeList() {  
     Node* current = tail;  
     if (current != NULL) {  
@@ -80,9 +80,9 @@ void freeList() {
             Node* next = current->next;  
             free(current);  
             current = next;  
-        } while (current != tail); // Ñ­»·Ö±µ½»Øµ½Î²½Úµã£¨×Ô»·±íÊ¾½áÊø£©  
+        } while (current != tail); // å¾ªç¯ç›´åˆ°å›åˆ°å°¾èŠ‚ç‚¹ï¼ˆè‡ªç¯è¡¨ç¤ºç»“æŸï¼‰  
     }  
-    tail = NULL; // ½«tailÉèÖÃÎªNULLÒÔ±íÊ¾Á´±íÒÑ±»ÊÍ·Å  
+    tail = NULL; // å°†tailè®¾ç½®ä¸ºNULLä»¥è¡¨ç¤ºé“¾è¡¨å·²è¢«é‡Šæ”¾  
 }  
   
 int main() {  
@@ -90,17 +90,17 @@ int main() {
     insert(1);  
     insert(2);  
     insert(3);  
-    traverse(); // Êä³ö: 1 2 3  
+    traverse(); // è¾“å‡º: 1 2 3  
   
     dequeue();  
-    traverse(); // Êä³ö: 2 3  
+    traverse(); // è¾“å‡º: 2 3  
   
     dequeue();  
-    traverse(); // Êä³ö: 3  
+    traverse(); // è¾“å‡º: 3  
   
     dequeue();  
-    traverse(); // Êä³ö: List is empty.  
+    traverse(); // è¾“å‡º: List is empty.  
   
-    freeList(); // ÊÍ·ÅÁ´±íÄÚ´æ  
+    freeList(); // é‡Šæ”¾é“¾è¡¨å†…å­˜  
     return 0;  
 } 

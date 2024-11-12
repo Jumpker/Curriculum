@@ -2,23 +2,23 @@
 
 int main(){
 	BTNode *b, *p, *lp,*rp;;
-	printf("¶ş²æÊ÷µÄ»ù±¾ÔËËãÈçÏÂ:\n");
-	printf("(1) ´´½¨¶ş²æÊ÷\n");
+	printf("äºŒå‰æ ‘çš„åŸºæœ¬è¿ç®—å¦‚ä¸‹:\n");
+	printf("(1) åˆ›å»ºäºŒå‰æ ‘\n");
 	CreateBTree(b,"A(B(D,E(H(J,K(L,M(,N))))),C(F,G(,I)))");
-	printf("(2) Êä³ö¶ş²æÊ÷:");DispBTree(b);printf("\n"); 
-	printf("(3) H½áµã");
+	printf("(2) è¾“å‡ºäºŒå‰æ ‘:");DispBTree(b);printf("\n"); 
+	printf("(3) Hç»“ç‚¹");
 	p = FindNode(b,'H');
 	if(p != NULL){
 		lp = LchildNode(p);
-		if(lp != NULL) printf("×óº¢×ÓÎª%c",lp->data);
-		else printf("ÎŞ×óº¢×Ó");
+		if(lp != NULL) printf("å·¦å­©å­ä¸º%c",lp->data);
+		else printf("æ— å·¦å­©å­");
 		rp = RchildNode(p);
-		if(rp != NULL) printf("ÓÒº¢×ÓÎª%c",rp->data);
-		else printf("ÎŞÓÒº¢×Ó");
+		if(rp != NULL) printf("å³å­©å­ä¸º%c",rp->data);
+		else printf("æ— å³å­©å­");
 	}
 	printf("\n");
-	printf("(4) ¶ş²æÊ÷bµÄ¸ß¶È: %d\n", BTHeight(b));
-	printf("(5) ÊÍ·Å¶ş²æÊ÷b\n");
+	printf("(4) äºŒå‰æ ‘bçš„é«˜åº¦: %d\n", BTHeight(b));
+	printf("(5) é‡Šæ”¾äºŒå‰æ ‘b\n");
 	DestoryBTree(b);
 	return 1;   
 }

@@ -2,38 +2,38 @@
 #include <string.h>  
 #include <stdbool.h>  
   
-#define MAX_SIZE 100  // Õ»µÄ×î´óÈÝÁ¿  
+#define MAX_SIZE 100  // æ ˆçš„æœ€å¤§å®¹é‡  
   
-// Ë³ÐòÕ»½á¹¹Ìå  
+// é¡ºåºæ ˆç»“æž„ä½“  
 typedef struct {  
     char data[MAX_SIZE];  
     int top;  
 } Stack;  
   
-// ³õÊ¼»¯Õ»  
+// åˆå§‹åŒ–æ ˆ  
 void initStack(Stack *s) {  
     s->top = -1;  
 }  
   
-// ÅÐ¶ÏÕ»ÊÇ·ñÎª¿Õ  
+// åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º  
 bool isEmpty(Stack *s) {  
     return s->top == -1;  
 }  
   
-// ½øÕ»  
+// è¿›æ ˆ  
 bool push(Stack *s, char c) {  
     if (s->top >= MAX_SIZE - 1) {  
-        // Õ»Âú£¬½øÕ»Ê§°Ü  
+        // æ ˆæ»¡ï¼Œè¿›æ ˆå¤±è´¥  
         return false;  
     }  
     s->data[++(s->top)] = c;  
     return true;  
 }  
 
-// ³öÕ»  
+// å‡ºæ ˆ  
 char pop(Stack *s) {  
     if (isEmpty(s)) {  
-        exit(EXIT_FAILURE); 		//Õ»Îª¿Õ, ÏÂÒç 
+        exit(EXIT_FAILURE); 		//æ ˆä¸ºç©º, ä¸‹æº¢ 
     }  
     return s->data[(s->top)--];  
 }  

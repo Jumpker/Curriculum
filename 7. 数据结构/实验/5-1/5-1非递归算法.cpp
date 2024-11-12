@@ -1,45 +1,45 @@
 #include<stdio.h>
 #include<malloc.h>
 #define MaxSize 100
-//-------·Çµİ¹éËã·¨--------------------------------- 
+//-------éé€’å½’ç®—æ³•--------------------------------- 
 typedef struct
-{	int n;								//ÅÌÆ¬¸öÊı 
-	char x,y,z;							//3¸öËş×ù 
-	bool flag;							//¿ÉÖ±½ÓÒÆ¶¯ÅÌÆ¬Ê±Îªtrue, ·ñÔòÎªfalse 
-}ElemType;								//Ë³ĞòÕ»ÖĞÔªËØµÄÀàĞÍ
+{	int n;								//ç›˜ç‰‡ä¸ªæ•° 
+	char x,y,z;							//3ä¸ªå¡”åº§ 
+	bool flag;							//å¯ç›´æ¥ç§»åŠ¨ç›˜ç‰‡æ—¶ä¸ºtrue, å¦åˆ™ä¸ºfalse 
+}ElemType;								//é¡ºåºæ ˆä¸­å…ƒç´ çš„ç±»å‹
 
 typedef struct 
-{	ElemType data[MaxSize];				//´æ·ÅÔªËØ 
-	int top;							//Õ»¶¥Ö¸Õë 
-} StackType;								//ÉùÃ÷Ë³ĞòÕ»ÀàĞÍ
+{	ElemType data[MaxSize];				//å­˜æ”¾å…ƒç´  
+	int top;							//æ ˆé¡¶æŒ‡é’ˆ 
+} StackType;								//å£°æ˜é¡ºåºæ ˆç±»å‹
 
-//----Çó½âHanoiÎÊÌâ¶ÔÓ¦Ë³ĞòÕ»µÄ»ù±¾ÔËËãËã·¨----------
+//----æ±‚è§£Hanoié—®é¢˜å¯¹åº”é¡ºåºæ ˆçš„åŸºæœ¬è¿ç®—ç®—æ³•----------
  
-void InitStack(StackType *&s)				//³õÊ¼»¯Ë³ĞòÕ»
+void InitStack(StackType *&s)				//åˆå§‹åŒ–é¡ºåºæ ˆ
 {	s = (StackType * )malloc(sizeof(StackType));
 	s -> top = -1;
  } 
  
-void DestroyStack(StackType *&s)			//Ïú»ÙË³ĞòÕ»
+void DestroyStack(StackType *&s)			//é”€æ¯é¡ºåºæ ˆ
 {
 	free(s);
  }
  
-bool StackEmpty(StackType *s)				//ÅĞ¶ÏÕ»¿Õ·ñ
+bool StackEmpty(StackType *s)				//åˆ¤æ–­æ ˆç©ºå¦
 {
 	return(s->top==-1);
  } 
  
-bool Push(StackType *&s,ElemType e)		//½øÕ»
-{	if (s->top == MaxSize - 1) 			//Õ»Âú, ÉÏÒç
+bool Push(StackType *&s,ElemType e)		//è¿›æ ˆ
+{	if (s->top == MaxSize - 1) 			//æ ˆæ»¡, ä¸Šæº¢
 		return false;
 	s -> top++;
 	s -> data[s->top]=e;
 	return true; 
  } 
  
-bool Pop(StackType *&s,ElemType &e)		//³öÕ»
-{	if (s->top == -1)					//Õ»Îª¿Õ, ÏÂÒç
+bool Pop(StackType *&s,ElemType &e)		//å‡ºæ ˆ
+{	if (s->top == -1)					//æ ˆä¸ºç©º, ä¸‹æº¢
 		return false;
 	e = s->data[s->top];	
 	s -> top--; 
@@ -49,39 +49,39 @@ bool Pop(StackType *&s,ElemType &e)		//³öÕ»
 
 
 void Hanoi2(int n, char x, char y, char z)
-{	StackType * st;						//¶¨ÒåË³ĞòÕ»Ö¸Õë
+{	StackType * st;						//å®šä¹‰é¡ºåºæ ˆæŒ‡é’ˆ
 	ElemType e, e1, e2, e3;
-	if (n<=0) return;					//²ÎÊı´íÎóÊ±Ö±½Ó·µ»Ø
-	InitStack(st);						//³õÊ¼»¯Õ»
+	if (n<=0) return;					//å‚æ•°é”™è¯¯æ—¶ç›´æ¥è¿”å›
+	InitStack(st);						//åˆå§‹åŒ–æ ˆ
 	e.n=n; e.x=x; e.y=y; e.z=z; e.flag=false;
-	Push(st,e);							//ÔªËØe½øÕ»
-	while(!StackEmpty(st))				//Õ»²»¿ÕÑ­»·
-	{	Pop(st,e);						//³öÕ»ÔªËØe
-		if(e.flag==false)				//µ±²»ÄÜÖ±½ÓÒÆ¶¯ÅÌÆ¬Ê± 
+	Push(st,e);							//å…ƒç´ eè¿›æ ˆ
+	while(!StackEmpty(st))				//æ ˆä¸ç©ºå¾ªç¯
+	{	Pop(st,e);						//å‡ºæ ˆå…ƒç´ e
+		if(e.flag==false)				//å½“ä¸èƒ½ç›´æ¥ç§»åŠ¨ç›˜ç‰‡æ—¶ 
 		{	e1.n=e.n-1; e1.x=e.y; e1.y=e.x; e1.z=e.z;
-			if(e1.n == 1)				//Ö»ÓĞÒ»¸öÅÌÆ¬Ê±¿ÉÖ±½ÓÒÆ¶¯
+			if(e1.n == 1)				//åªæœ‰ä¸€ä¸ªç›˜ç‰‡æ—¶å¯ç›´æ¥ç§»åŠ¨
 				e1.flag = true;
-			else						//ÓĞÒ»¸öÒÔÉÏÅÌÆ¬Ê±²»ÄÜÖ±½ÓÒÆ¶¯
+			else						//æœ‰ä¸€ä¸ªä»¥ä¸Šç›˜ç‰‡æ—¶ä¸èƒ½ç›´æ¥ç§»åŠ¨
 				e1.flag = false;
-			Push(st, e1);				//´¦ÀíHanoi(n-1,y,x,z²½Öè
+			Push(st, e1);				//å¤„ç†Hanoi(n-1,y,x,zæ­¥éª¤
 			e2.n=e.n; e2.x=e.x; e2.y=e.y; e2.z=e.z; e2.flag=true;
-			Push(st, e2);				//´¦Àímove(n,x,z)²½Öè
+			Push(st, e2);				//å¤„ç†move(n,x,z)æ­¥éª¤
 			e3.n=e.n-1; e3.x=e.x; e3.y=e.z; e3.z=e.y;
-			if (e3.n == 1)				//Ö»ÓĞÒ»¸öÅÌÆ¬Ê±¿ÉÖ±½ÓÒÆ¶¯
+			if (e3.n == 1)				//åªæœ‰ä¸€ä¸ªç›˜ç‰‡æ—¶å¯ç›´æ¥ç§»åŠ¨
 				e3.flag = true;
-			else						//ÓĞÒ»¸öÒÔÉÏÅÌÆ¬Ê±²»ÄÜÖ±½ÓÒÆ¶¯
+			else						//æœ‰ä¸€ä¸ªä»¥ä¸Šç›˜ç‰‡æ—¶ä¸èƒ½ç›´æ¥ç§»åŠ¨
 				e3.flag = false;
-			Push(st,e3);				//´¦ÀíHanoi(n-1,x,z,y)²½Öè 
+			Push(st,e3);				//å¤„ç†Hanoi(n-1,x,z,y)æ­¥éª¤ 
 		}
-	 	else							//µ±¿ÉÒÔÖ±½ÓÒÆ¶¯Ê± 
-	 		printf("\t½«µÚ%d¸öÅÌÆ¬´Ó%cÒÆ¶¯µ½%c\n",e.n,e.x,e.z);
+	 	else							//å½“å¯ä»¥ç›´æ¥ç§»åŠ¨æ—¶ 
+	 		printf("\tå°†ç¬¬%dä¸ªç›˜ç‰‡ä»%cç§»åŠ¨åˆ°%c\n",e.n,e.x,e.z);
 	 } 
- 	DestroyStack(st);					//Ïú»ÙÕ» 
+ 	DestroyStack(st);					//é”€æ¯æ ˆ 
  } 
  //-----------------------------------------------------
  int main(){
  	int n = 3;
- 	printf("·Çµİ¹éËã·¨: %d¸öÅÌÆ¬ÒÆ¶¯¹ı³Ì:\n",n);
+ 	printf("éé€’å½’ç®—æ³•: %dä¸ªç›˜ç‰‡ç§»åŠ¨è¿‡ç¨‹:\n",n);
  	Hanoi2(n,'X','Y','Z');
  	return 1;
  } 

@@ -1,33 +1,33 @@
-#include "sqstack.cpp"									//°üº¬Ë³ĞòÕ»µÄ»ù±¾ÔËËãËã·¨
+#include "sqstack.cpp"									//åŒ…å«é¡ºåºæ ˆçš„åŸºæœ¬è¿ç®—ç®—æ³•
 int main(){
 	ElemType e;
 	SqStack *s;
-	printf("Ë³ĞòÕ»sµÄ»ù±¾ÔËËãÈçÏÂ: \n");
+	printf("é¡ºåºæ ˆsçš„åŸºæœ¬è¿ç®—å¦‚ä¸‹: \n");
 	
-	printf("(1) ³õÊ¼»¯Ë³ĞòÕ»s\n");
+	printf("(1) åˆå§‹åŒ–é¡ºåºæ ˆs\n");
 	InitStack(s);
 	
-	printf("(2) Õ»Îª%s\n",(StackEmpty(s)?"¿Õ":"·Ç¿Õ"));
+	printf("(2) æ ˆä¸º%s\n",(StackEmpty(s)?"ç©º":"éç©º"));
 	
-	printf("(3) ÒÀ´Î½øÕ»ÔªËØa,b,c,d,e\n");
+	printf("(3) ä¾æ¬¡è¿›æ ˆå…ƒç´ a,b,c,d,e\n");
 	Push(s,'a');
 	Push(s,'b');
 	Push(s,'c');
 	Push(s,'d');
 	Push(s,'e');
 	
-	printf("(4) Õ»Îª%s\n",(StackEmpty(s)?"¿Õ":"·Ç¿Õ"));
+	printf("(4) æ ˆä¸º%s\n",(StackEmpty(s)?"ç©º":"éç©º"));
 	
-	printf("(5) ³öÕ»ĞòÁĞ: ");
+	printf("(5) å‡ºæ ˆåºåˆ—: ");
 	while (!StackEmpty(s))
 	{	Pop(s,e);
 		printf(" %c",e);
 	}
 	printf("\n");
 	
-	printf("(6) Õ»Îª%s\n",(StackEmpty(s)?"¿Õ":"·Ç¿Õ"));
+	printf("(6) æ ˆä¸º%s\n",(StackEmpty(s)?"ç©º":"éç©º"));
 	
-	printf("(7) ÊÍ·ÅÕ»\n");
+	printf("(7) é‡Šæ”¾æ ˆ\n");
 	DestroyStack(s);
 	return 1;
 } 

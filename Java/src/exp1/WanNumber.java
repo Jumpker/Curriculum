@@ -1,4 +1,4 @@
-package src;
+package src.exp1;
 
 public class WanNumber{
     public static void main(String[] args) {

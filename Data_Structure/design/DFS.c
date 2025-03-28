@@ -17,7 +17,7 @@ bool DFS(int **Board,int Size, int x, int y, int step){
     return false;                                                               //如果所有路都走不通，则返回false
 }
 int main(){
-    int n;                             //棋盘大小           
+    int n;                             //棋盘大小, n*n的棋盘输入一个n值就行
     printf("请输入棋盘大小：");
     scanf("%d",&n);                            
     int **Board = (int **)malloc(sizeof(int *)*n);
@@ -30,7 +30,7 @@ int main(){
             Board[i][j]=0;
         }
     }
-    printf("请输入你的马的初始位置，用空格隔开：");
+    printf("请输入你的马的初始位置，左上角格为(1, 1)，用空格隔开：");
     scanf("%d %d",&x,&y);
     if (x < 0 || x > n-1 || y < 0 || y > n-1){
         printf("初始位置超出棋盘范围！\n");

@@ -1,4 +1,4 @@
-package src;
+package src.exp1;
 
 public class Prime {
     public static void main(String[] args) {

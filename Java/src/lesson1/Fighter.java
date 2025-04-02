@@ -16,8 +16,18 @@ public class Fighter {
         this.protection = protection;
     }
 
-    public void attack(Fighter attacker){
-        int damage = Math.max(0, attacker.damagePerAttack-this.protection+rand.nextInt(5));
+    public int getHealth() {
+        return health;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void attacked(Fighter attacker){
+        int damage = Math.max(0, attacker.damagePerAttack-this.protection+rand.nextInt(5));
+        this.health -= damage;
+        if(this.health < 0) this.health = 0;
+        System.out.println(attacker.name + " hit " + this.name + " for " + damage + " damage, remaining health " + this.health);
     }
 }

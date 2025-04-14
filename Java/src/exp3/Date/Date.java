@@ -21,17 +21,14 @@ public class Date{
 
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // 第一天是星期几
         int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH); // 该月总天数
-
         // 打印月份标题
         System.out.printf("\n%20s %d\n", monthName, year);
         System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
-
         // 首行缩进
         int leadingSpaces = (dayOfWeek == Calendar.SUNDAY) ? 0 : dayOfWeek - Calendar.SUNDAY;
         for (int i = 0; i < leadingSpaces; i++) {
             System.out.print("    ");
         }
-
         // 打印日期
         for (int day = 1; day <= daysInMonth; day++) {
             System.out.printf("%4d", day);
@@ -39,7 +36,6 @@ public class Date{
                 System.out.println();
             }
         }
-
         // 如果最后一行未满，补一个换行
         if ((daysInMonth + leadingSpaces) % 7 != 0) {
             System.out.println();

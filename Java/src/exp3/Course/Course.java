@@ -12,6 +12,8 @@ public class Course {
     }
     //输出课程信息
     public void printCourseInfo(){
-        System.out.println("\n课程号：" + cNnumber + "\n课程名：" + cName + "\n学分数：" + cuit);
+        System.out.println("\n课程号：" + cNnumber +
+                            "\n课程名：" + cName +
+                            "\n学分数：" + cuit);
     }
 }

@@ -1,4 +1,4 @@
-package src.exp3.Course;
+package src.exp2.exp2_5.Course;
 
 public class Main {
     public static void main(String[] args) {

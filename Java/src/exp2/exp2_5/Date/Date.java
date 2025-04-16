@@ -1,7 +1,6 @@
-package src.exp3.Date;
+package src.exp2.exp2_5.Date;
 
 import java.util.Calendar;
-import java.util.Scanner;
 
 public class Date{
     private final int year;

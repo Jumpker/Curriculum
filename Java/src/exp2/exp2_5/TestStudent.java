@@ -1,4 +1,4 @@
-package src.exp3;
+package src.exp2.exp2_5;
 
 class Student{
     String name;

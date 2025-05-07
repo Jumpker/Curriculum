@@ -36,20 +36,22 @@ int main(){
     }
     printf("请输入你的马的初始位置，左上角格为(1, 1)，用空格隔开：");
     scanf("%d %d",&x,&y);
-    if (x < 0 || x > n-1 || y < 0 || y > n-1){
+    if (x < 0 || x > n || y < 0 || y > n){
         printf("初始位置超出棋盘范围！\n");
         return 1;
     }
     x--;y--;
+    int temp = x; x = y; y = temp;
     bool result = DFS(Board, n, x, y, step);
-    printf("%d\n", result ? 1 : 0);                                             //输出结果，将bool转换为整数
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
-            printf("%d\t",Board[i][j]);
+    if(!result) printf("无解！\n");
+    else{
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                printf("%d\t",Board[i][j]);
+            }
+            printf("\n");
         }
-        printf("\n");
     }
-
     for (int i = 0; i < n; i++) {                                               //释放内存
         free(Board[i]);
     }

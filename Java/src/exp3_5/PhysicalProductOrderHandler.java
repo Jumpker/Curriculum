@@ -1,18 +1,19 @@
 package src.exp3_5;
 
 // 处理实物商品订单的类
-class PhysicalProductOrderHandler extends AbstractOrderHandler {
+class PhysicalProductOrderHandler extends src.exp3_5.AbstractOrderHandler {
     private String shippingAddress;
     private double productPrice;
     private int quantity;
-    private static int productQuantity = 10;
+    private int productQuantity; // 改为实例变量（非static）
 
-    // 构造函数，初始化实物商品订单处理器
-    public PhysicalProductOrderHandler(String orderId, String shippingAddress, double productPrice, int quantity) {
+    // 构造函数新增初始库存参数
+    public PhysicalProductOrderHandler(String orderId, String shippingAddress, double productPrice, int quantity, int initialProductQuantity) {
+        super(orderId);
         this.shippingAddress = shippingAddress;
         this.productPrice = productPrice;
         this.quantity = quantity;
-        super(orderId);
+        this.productQuantity = initialProductQuantity; // 从外部传入初始库存
     }
 
     // 计算实物订单的总金额
@@ -41,8 +42,8 @@ class PhysicalProductOrderHandler extends AbstractOrderHandler {
     @Override
     public boolean sendConfirmation() {
         if ("PROCESSING".equals(getOrderStatus())) {
-            System.out.println("开始发送确认邮件：");
-            System.out.println("成功发送确认邮件：" + getOrderId());
+            System.out.println("开始发送确认邮件...");
+            System.out.println("成功发送确认邮件！订单号：" + getOrderId());
             setStatus("COMPLETED");
             return true;
         }

@@ -4,8 +4,12 @@ package src.lesson4;
 interface Animal {
     void makeSound(); // 发出叫声的方法
 }
-
-// 主类，用于演示
+abstract class AnimalSound {
+    AnimalSound(String name) {
+    }
+    abstract void makeSound();
+}
+// 直接使用匿名内部类
 public class AnimalSoundWithInnerClass {
 
     public static void main(String[] args) {
@@ -17,7 +21,7 @@ public class AnimalSoundWithInnerClass {
         };
         dog.makeSound();
 
-        Animal cat = new Animal() {
+        AnimalSound cat = new AnimalSound("Cat") {
             @Override
             public void makeSound() {
                 System.out.println("喵喵喵！ (来自匿名内部类Cat)");

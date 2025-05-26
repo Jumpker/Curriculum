@@ -1,0 +1,225 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "src.exp1.Hello",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Prime",
+            "request": "launch",
+            "mainClass": "src.exp1.Prime",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "SearchN",
+            "request": "launch",
+            "mainClass": "src.exp1.SearchN",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "WanNumber",
+            "request": "launch",
+            "mainClass": "src.exp1.WanNumber",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "src.exp2.Date.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(1)",
+            "request": "launch",
+            "mainClass": "src.exp2.MyInteger.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(2)",
+            "request": "launch",
+            "mainClass": "src.exp2.Rectangle.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(3)",
+            "request": "launch",
+            "mainClass": "src.exp2.Student.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(4)",
+            "request": "launch",
+            "mainClass": "src.exp2.exp2_5.Account.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(5)",
+            "request": "launch",
+            "mainClass": "src.exp2.exp2_5.Course.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(6)",
+            "request": "launch",
+            "mainClass": "src.exp2.exp2_5.Date.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "TestStudent",
+            "request": "launch",
+            "mainClass": "src.exp2.exp2_5.TestStudent",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Pointer",
+            "request": "launch",
+            "mainClass": "src.exp3.Pointer",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "School",
+            "request": "launch",
+            "mainClass": "src.exp3.School",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "shu",
+            "request": "launch",
+            "mainClass": "src.exp3.shu",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Calculater",
+            "request": "launch",
+            "mainClass": "src.exp3_5.Calculater",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "OrderSystemExamDemo",
+            "request": "launch",
+            "mainClass": "src.exp3_5.OrderSystemExamDemo",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Demo1",
+            "request": "launch",
+            "mainClass": "src.exp4.Demo1",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Lambda",
+            "request": "launch",
+            "mainClass": "src.exp4.Lambda",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(7)",
+            "request": "launch",
+            "mainClass": "src.lesson1.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "FighterGame",
+            "request": "launch",
+            "mainClass": "src.lesson2.Fighter.FighterGame",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(8)",
+            "request": "launch",
+            "mainClass": "src.lesson2.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(9)",
+            "request": "launch",
+            "mainClass": "src.lesson3.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "AnimalSoundWithInnerClass",
+            "request": "launch",
+            "mainClass": "src.lesson4.AnimalSoundWithInnerClass",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "ButtonDemoWithInnerClass",
+            "request": "launch",
+            "mainClass": "src.lesson4.ButtonDemoWithInnerClass",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Main(10)",
+            "request": "launch",
+            "mainClass": "src.lesson4.Main",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "TaskDemoWithInnerClass",
+            "request": "launch",
+            "mainClass": "src.lesson4.TaskDemoWithInnerClass",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "GUI",
+            "request": "launch",
+            "mainClass": "src.lesson5.GUI",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "LoginDemo",
+            "request": "launch",
+            "mainClass": "src.lesson5.LoginDemo",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "TimerExample",
+            "request": "launch",
+            "mainClass": "src.lesson5.TimerExample",
+            "projectName": "Java_2b5003e0"
+        }
+    ]
+}

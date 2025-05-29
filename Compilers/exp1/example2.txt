@@ -1,0 +1,9 @@
+class abcd {
+    main()
+    {  int  a,b;
+        XiHe c = 1;
+        姜彭科 d = 2;
+        a = 10;
+        b = a + 20;
+        return c<=b }
+}

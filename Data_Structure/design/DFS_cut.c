@@ -2,26 +2,42 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+// 定义棋盘上的点结构
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+// 定义马的移动方向结构
+typedef struct {
+    int dx;
+    int dy;
+} Move;
+
 // 计算从(x,y)出发的每个方向的下一步可走方向数
-void calculateNextSteps(int **Board, int Size, int x, int y, const int mv[8][2], int next_steps[8]) {
+void calculateNextSteps(int **Board, int Size, Point current_pos, const Move knight_moves[8], int next_steps[8]) {
     for (int i = 0; i < 8; i++) {
-        int nx = x + mv[i][0], ny = y + mv[i][1];
+        int nx = current_pos.x + knight_moves[i].dx;
+        int ny = current_pos.y + knight_moves[i].dy;
+
+        // 检查下一步是否在棋盘内且未被访问
         if (nx >= 0 && nx < Size && ny >= 0 && ny < Size && Board[nx][ny] == 0) {
             next_steps[i] = 0;
-            // 计算(nx,ny)的下一步可走方向数
+            // 计算从(nx,ny)出发的下一步可走方向数
             for (int j = 0; j < 8; j++) {
-                int nnx = nx + mv[j][0], nny = ny + mv[j][1];
+                int nnx = nx + knight_moves[j].dx;
+                int nny = ny + knight_moves[j].dy;
                 if (nnx >= 0 && nnx < Size && nny >= 0 && nny < Size && Board[nnx][nny] == 0) {
                     next_steps[i]++;
                 }
             }
         } else {
-            next_steps[i] = -1; // 标记无效方向
+            next_steps[i] = -1; // 标记为无效方向
         }
     }
 }
 
-// 按next_steps升序排序方向（Warnsdorff规则）
+// 根据Warnsdorff规则，按下一步可走方向数升序排序方向
 void sortDirections(int indices[8], const int next_steps[8]) {
     // 初始化方向索引
     for (int i = 0; i < 8; i++) indices[i] = i;
@@ -37,32 +53,49 @@ void sortDirections(int indices[8], const int next_steps[8]) {
     }
 }
 
-bool DFS(int **Board, int Size, int x, int y, int step) {
-    int mv[8][2] = {{2,1},{1,2},{-1,2},{-2,1},{-2,-1},{-1,-2},{1,-2},{2,-1}};
-    
+// 深度优先搜索函数，用于寻找马的遍历路径
+bool DFS(int **Board, int Size, Point current_pos, int step) {
+    // 定义马的八个可能的移动方向
+    Move knight_moves[8] = {
+        {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
+        {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
+    };
+
+    // 标记当前位置为已访问，并记录步数
+    Board[current_pos.x][current_pos.y] = step;
+
+    // 如果所有格子都被访问，则找到一个解
     if (step == Size * Size) {
-        Board[x][y] = step;
         return true;
     }
-    Board[x][y] = step;
 
-    // 计算每个方向的下一步可走方向数
+    // 存储每个方向的下一步可走方向数
     int next_steps[8];
-    calculateNextSteps(Board, Size, x, y, mv, next_steps);
+    calculateNextSteps(Board, Size, current_pos, knight_moves, next_steps);
 
-    // 按next_steps升序排序方向
+    // 存储排序后的方向索引
     int indices[8];
     sortDirections(indices, next_steps);
 
-    // 按排序后的方向递归
+    // 尝试按Warnsdorff规则排序后的方向进行递归
     for (int k = 0; k < 8; k++) {
         int i = indices[k];
-        if (next_steps[i] == -1) continue; // 跳过无效方向
-        int nx = x + mv[i][0], ny = y + mv[i][1];
-        if (DFS(Board, Size, nx, ny, step + 1)) return true;
+        // 跳过无效或已访问的方向
+        if (next_steps[i] == -1) {
+            continue;
+        }
+
+        // 计算下一个位置
+        Point next_pos = {current_pos.x + knight_moves[i].dx, current_pos.y + knight_moves[i].dy};
+
+        // 递归调用DFS
+        if (DFS(Board, Size, next_pos, step + 1)) {
+            return true;
+        }
     }
 
-    Board[x][y] = 0; // 回溯
+    // 如果当前路径无法找到解，则回溯，将当前位置标记为未访问
+    Board[current_pos.x][current_pos.y] = 0;
     return false;
 }
 
@@ -84,9 +117,11 @@ int main() {
         printf("初始位置超出棋盘范围！\n");
         return 1;
     }
-    x--; y--;
+    // 将用户输入的起始位置转换为Point结构体
+    Point start_pos = {x, y};
 
-    bool result = DFS(Board, n, x, y, 1);
+    // 调用DFS函数开始寻找马的遍历路径
+    bool result = DFS(Board, n, start_pos, 1);
     printf("%d\n", result ? 1 : 0);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {

@@ -105,7 +105,7 @@ def main():
     mc.postToChat("正在探索路径中...")
 
     result = DFS(Board, n, x, y, 1, player_pos)
-    print("路径存在：", 1 if result else 0)
+    print("路径（1为存在，0为不存在）：", 1 if result else 0)
     if result:
         mc.postToChat("路径存在！")
         path_matrix_str = "\n".join(["  ".join(map(str, row)) for row in Board])  # 将制表符替换为空格

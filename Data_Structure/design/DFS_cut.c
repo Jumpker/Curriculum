@@ -111,9 +111,15 @@ int main() {
     }
 
     int x, y;
-    printf("请输入你的马的初始位置，左上角格为(1, 1)，用空格隔开：");
+    printf("请输入你的马的初始位置。\n注意：左上角格为(1, 1)，x正轴往右，y正轴往下，用空格隔开：\n");
     scanf("%d %d", &x, &y);
-    if (x < 1 || x > n || y < 1 || y > n) {
+    // 将用户输入的1-indexed坐标转换为0-indexed
+    x--; 
+    y--;
+    int temp = x;
+    x = y;
+    y = temp;
+    if (x < 0 || x >= n || y < 0 || y >= n) {
         printf("初始位置超出棋盘范围！\n");
         return 1;
     }
@@ -122,14 +128,15 @@ int main() {
 
     // 调用DFS函数开始寻找马的遍历路径
     bool result = DFS(Board, n, start_pos, 1);
-    printf("%d\n", result ? 1 : 0);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%d\t", Board[i][j]);
+    if (result) {
+        printf("找到有解，路线如下：\n");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                printf("%d\t", Board[i][j]);
+            }
+            printf("\n");
         }
-        printf("\n");
-    }
-
+    }else printf("无解！");
     for (int i = 0; i < n; i++) free(Board[i]);
     free(Board);
     return 0;

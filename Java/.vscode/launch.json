@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StringCipher",
+            "request": "launch",
+            "mainClass": "src.lesson6.StringCipher",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "StringCipher",
+            "request": "launch",
+            "mainClass": "lesson6.StringCipher",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
             "name": "FireRoomGame",
             "request": "launch",
             "mainClass": "src.Design.FireRoomGame",

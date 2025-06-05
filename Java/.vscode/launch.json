@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FireRoomGame",
+            "request": "launch",
+            "mainClass": "src.Design.FireRoomGame",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "LoginSystemGUI",
+            "request": "launch",
+            "mainClass": "src.exp6.LoginSystemGUI",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "Calculator",
+            "request": "launch",
+            "mainClass": "src.exp6.Calculator",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
             "name": "Circle",
             "request": "launch",
             "mainClass": "src.lesson5.Circle",

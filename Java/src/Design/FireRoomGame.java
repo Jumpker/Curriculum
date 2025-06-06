@@ -13,7 +13,7 @@ public class FireRoomGame extends JFrame {
     private JPanel mainContentPanel;
     private CardLayout cardLayout;
     private JPanel resourcePanel;
-    private JPanel shopPanel;
+    private JPanel buildingPanel; // Changed from shopPanel to buildingPanel
     private JButton currentScaleButton;
     private boolean gamePhase2Triggered = false;
     private Map<String, Integer> resources = new HashMap<>();
@@ -71,12 +71,13 @@ public class FireRoomGame extends JFrame {
         resourcePanel = new JPanel();
         resourcePanel.setBackground(Color.WHITE);
         resourcePanel.setBorder(BorderFactory.createTitledBorder("资源面板"));
+        resourcePanel.setPreferredSize(new Dimension(250, resourcePanel.getPreferredSize().height)); // Set preferred width to 250
         resourcePanel.setVisible(false);
 
-        shopPanel = new JPanel();
-        shopPanel.setBackground(Color.WHITE);
-        shopPanel.setBorder(BorderFactory.createTitledBorder("商店面板"));
-        shopPanel.setVisible(false);
+        buildingPanel = new JPanel(); // Changed from shopPanel to buildingPanel
+        buildingPanel.setBackground(Color.WHITE);
+        buildingPanel.setBorder(BorderFactory.createTitledBorder("建筑面板")); // Changed title
+        buildingPanel.setVisible(false);
 
         // Initialize scenes
         setupFireRoomScene();
@@ -120,7 +121,14 @@ public class FireRoomGame extends JFrame {
         JPanel interactionPanel = new JPanel();
         interactionPanel.setBackground(Color.WHITE);
         interactionPanel.setBorder(BorderFactory.createTitledBorder("交互面板"));
-        fireRoomPanel.add(interactionPanel, BorderLayout.CENTER);
+        // fireRoomPanel.add(interactionPanel, BorderLayout.CENTER); // Removed this line
+
+        // New layout for center: interactionPanel on top, buildingPanel on bottom
+        JPanel centerPanel = new JPanel(new GridLayout(2, 1));
+        centerPanel.setBackground(Color.WHITE);
+        centerPanel.add(interactionPanel);
+        centerPanel.add(buildingPanel); // Added buildingPanel below interactionPanel
+        fireRoomPanel.add(centerPanel, BorderLayout.CENTER);
 
         // Game Phase 1: Only "添柴" button
         CooldownButton addFuelButton = new CooldownButton("添柴", 6); // 6 seconds cooldown
@@ -173,13 +181,13 @@ public class FireRoomGame extends JFrame {
             }
         });
 
-        // Right Panel for Resource and Shop
+        // Right Panel for Resource (original shopPanel position is now empty)
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.WHITE);
         rightPanel.setLayout(new GridLayout(2, 1)); // Arrange vertically
 
         rightPanel.add(resourcePanel);
-        rightPanel.add(shopPanel);
+        // rightPanel.add(shopPanel); // Removed shopPanel from here
 
         fireRoomPanel.add(rightPanel, BorderLayout.EAST);
 
@@ -187,9 +195,9 @@ public class FireRoomGame extends JFrame {
     }
 
     private void triggerGamePhase2() {
-        // Show resource and shop panels
+        // Show resource and building panels
         resourcePanel.setVisible(true);
-        shopPanel.setVisible(true);
+        buildingPanel.setVisible(true); // Changed from shopPanel to buildingPanel
 
         // Update Current Scale button name
         currentScaleButton.setText("静谧森林");
@@ -207,9 +215,9 @@ public class FireRoomGame extends JFrame {
 
         // Messages for phase 2
         Timer phase2MessagesTimer = new Timer(15000, e -> {
-            addMessage("建造者说她能够制作陷阱来捕捉那些仍在野外活动的野兽.");
+            addMessage("建造者说他能够制作陷阱来捕捉那些仍在野外活动的野兽.");
             Timer message2Timer = new Timer(5000, ev2 -> {
-                addMessage("建造者说她能够制造出货车，用来运载木头.");
+                addMessage("建造者说他能够制造出货车，用来运载木头.");
                 Timer message3Timer = new Timer(5000, ev3 -> {
                     addMessage("建造者说这里有许多流浪者，他们也会来工作.");
                 });
@@ -227,33 +235,42 @@ public class FireRoomGame extends JFrame {
     }
 
     private void addBuildingOptions() {
-        shopPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        shopPanel.setBorder(BorderFactory.createTitledBorder("建筑"));
+        buildingPanel.setLayout(new BoxLayout(buildingPanel, BoxLayout.Y_AXIS));
+        buildingPanel.setBorder(BorderFactory.createTitledBorder("建筑"));
 
+        // Create a panel for hut button and its info label
+        JPanel hutPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         HoverInfoButton hutButton = new HoverInfoButton("小屋", "木头-100");
-        shopPanel.add(hutButton);
-        shopPanel.add(hutButton.getInfoLabel()); // Add the info label next to the button
+        hutPanel.add(hutButton);
+        hutPanel.add(hutButton.getInfoLabel());
+        buildingPanel.add(hutPanel);
 
+        // Create a panel for trap button and its info label
+        JPanel trapPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         HoverInfoButton trapButton = new HoverInfoButton("陷阱", "木头-10");
-        shopPanel.add(trapButton);
-        shopPanel.add(trapButton.getInfoLabel());
+        trapPanel.add(trapButton);
+        trapPanel.add(trapButton.getInfoLabel());
+        buildingPanel.add(trapPanel);
 
+        // Create a panel for cart button and its info label
+        JPanel cartPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         HoverInfoButton cartButton = new HoverInfoButton("货车", "木头-30");
-        shopPanel.add(cartButton);
-        shopPanel.add(cartButton.getInfoLabel());
+        cartPanel.add(cartButton);
+        cartPanel.add(cartButton.getInfoLabel());
+        buildingPanel.add(cartPanel);
 
         // Add action listeners for building buttons (logic to be implemented)
         hutButton.addActionListener(e -> buildHut());
         trapButton.addActionListener(e -> buildTrap());
         cartButton.addActionListener(e -> buildCart());
 
-        shopPanel.revalidate();
-        shopPanel.repaint();
+        buildingPanel.revalidate();
+        buildingPanel.repaint();
     }
 
     private void buildHut() {
         // Logic for building hut
-        addMessage("建造者在林中建起一栋小屋，她说消息很快就会流传出去.");
+        addMessage("建造者在林中建起一栋小屋，他说消息很快就会流传出去.");
         // Check resources, deduct, update count, etc.
     }
 

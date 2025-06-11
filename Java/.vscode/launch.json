@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductInventoryManager",
+            "request": "launch",
+            "mainClass": "src.exp7.ProductInventoryManager",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "PersonalFortuneGenerator",
+            "request": "launch",
+            "mainClass": "src.exp7.PersonalFortuneGenerator",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
+            "name": "LuckyDog",
+            "request": "launch",
+            "mainClass": "src.exp7.LuckyDog",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
             "name": "Time",
             "request": "launch",
             "mainClass": "src.exp7.Time",

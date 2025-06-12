@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MyFile",
+            "request": "launch",
+            "mainClass": "src.lesson7.MyFile",
+            "projectName": "Java_2b5003e0"
+        },
+        {
+            "type": "java",
             "name": "ProductInventoryManager",
             "request": "launch",
             "mainClass": "src.exp7.ProductInventoryManager",

@@ -54,7 +54,7 @@ public class FireRoomGame extends JFrame {
         add(topButtonPanel, BorderLayout.NORTH);
 
         JButton fireRoomButton = new JButton("生火间");
-        currentScaleButton = new JButton("当前规模");
+        currentScaleButton = new JButton("   /   ");
         JButton longJourneyButton = new JButton("漫漫尘途");
 
         topButtonPanel.add(fireRoomButton);

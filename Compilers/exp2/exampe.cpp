@@ -5,27 +5,21 @@
 using namespace std;
 
 // 状态转移表
-int Pas_aut[8][5] = {
-    // 0-9  .   e/E  +/- other
-    {2,   0,   0,   0,   0}, // 1
-    {2,   3,   5,   0,   8}, // 2
-    {4,   0,   0,   0,   0}, // 3
-    {4,   0,   5,   0,   8}, // 4
-    {7,   0,   0,   6,   0}, // 5
-    {7,   0,   0,   0,   0}, // 6
-    {7,   0,   0,   0,   8}, // 7
-    {0,   0,   0,   0,   0}  // 8
+int Pas_aut[3][3] = {
+    // 0   1   other
+    {2,  2,  0}, // 1 (初始状态)
+    {2,  2,  3}, // 2 (接收数字状态)
+    {0,  0,  0}  // 3 (接受状态)
 };
 
-string line; // 输入字符串
+std::string line; // 输入字符串
 
 class PascalCons
 {
 private:
-    int aut[8][5];      // 状态转移表
+    int aut[3][3];      // 状态转移表
     int s;              // 当前状态
-    int n, p, m, e, t;  // 尾数、指数、小数位数、指数符号、是否含小数
-    double num;         // 结果
+    int n;              // 结果数值
     char ch;            // 当前字符
 
 public:
@@ -54,16 +48,12 @@ void PascalCons::ProcError()
 
 int PascalCons::map(char ch)
 {
-    if (ch >= '0' && ch <= '9')
+    if (ch == '0')
         return 0;
-    else if (ch == '.')
+    else if (ch == '1')
         return 1;
-    else if (ch == 'E' || ch == 'e')
-        return 2;
-    else if (ch == '+' || ch == '-')
-        return 3;
     else
-        return 4;
+        return 2; // 其他字符（如空格、结尾标志）
 }
 
 int PascalCons::find(int s, char ch)
@@ -79,51 +69,24 @@ void PascalCons::act(int s, char ch)
     {
     case 1:
         n = 0;
-        p = 0;
-        m = 0;
-        e = 1;
-        t = 0;
-        num = 0;
         break;
     case 2:
-        n = 10 * n + (ch - '0');
-        break;
-    case 3:
-        t = 1;
-        break;
-    case 4:
-        n = 10 * n + (ch - '0');
-        m++;
-        break;
-    case 5:
-        // 进入指数部分
-        break;
-    case 6:
-        if (ch == '-')
-            e = -1;
-        else if (ch == '+')
-            e = 1;
-        break;
-    case 7:
-        p = 10 * p + (ch - '0');
-        break;
-    case 8:
-        num = n * pow(10, e * p - m);
+        n = n * 2 + (ch - '0');
         break;
     }
 }
 
-double PascalCons::number(int* pos)
+double PascalCons::number(int *p)
 {
     s = 1;
-    act(s, ' '); // 初始化
+    act(s, ' '); // 初始化动作
 
     while (true)
     {
-        if (*pos >= line.length()) break;
+        if (*p >= line.length()) break;
 
-        ch = line[*pos];
-        (*pos)++;
+        ch = line.at(*p);
+        (*p)++;
 
         int next_s = find(s, ch);
         if (next_s == 0) break;
@@ -131,13 +94,12 @@ double PascalCons::number(int* pos)
         s = next_s;
         act(s, ch);
 
-        if (s == 8) break;
+        if (s == 3) break; // 接受状态
     }
 
-    if (s == 8)
-        return num;
-    else
-    {
+    if (s == 3)
+        return n;
+    else {
         ProcError();
         return 0;
     }
@@ -149,12 +111,16 @@ int main()
 
     while (true)
     {
-        cout << "please input a number: ";
-        getline(cin, line);
-        if (line.empty()) break;
-        line += ' '; // 结束符，模拟空格
-        int i_line = 0;
-        cout << a.number(&i_line) << endl;
+        cout << "please input a binary number: ";
+        std::getline(std::cin, line);
+        line += ' '; // 添加结束标志空格
+        int i_line = 0; // 每次重新初始化指针
+        double result = a.number(&i_line);
+        if (result == 0 && i_line == 0 && line.length() == 1) { // 处理空输入
+            // 不做任何处理，继续下一次循环
+        } else {
+            cout << result << endl;
+        }
     }
 
     return 0;

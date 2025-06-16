@@ -6,6 +6,7 @@ import src.Design.event.EventManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 /**
  * 建筑面板类，用于显示和管理游戏中的建筑选项
@@ -13,6 +14,7 @@ import java.awt.*;
 public class BuildingPanel {
     private JPanel panel;
     private GameController controller;
+    private JPanel cartPanel; // 保存货车按钮面板的引用
     
     /**
      * 构造函数
@@ -29,6 +31,9 @@ public class BuildingPanel {
         
         // 监听游戏阶段变化事件
         controller.getEventManager().addGamePhaseChangeListener(this::onGamePhaseChanged);
+        
+        // 监听建筑变化事件
+        controller.getEventManager().addBuildingChangeListener(this::onBuildingChanged);
     }
     
     /**
@@ -72,7 +77,7 @@ public class BuildingPanel {
         panel.add(trapPanel);
         
         // 创建货车按钮及其信息标签的面板
-        JPanel cartPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        cartPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         HoverInfoButton cartButton = new HoverInfoButton("货车", "木头-30");
         cartPanel.add(cartButton);
         cartPanel.add(cartButton.getInfoLabel());
@@ -85,5 +90,19 @@ public class BuildingPanel {
         
         panel.revalidate();
         panel.repaint();
+    }
+    
+    /**
+     * 建筑变化处理
+     * @param buildings 建筑数量映射
+     */
+    private void onBuildingChanged(Map<String, Integer> buildings) {
+        // 检查是否有货车，如果有则移除货车按钮
+        if (buildings.containsKey("货车") && buildings.get("货车") > 0 && cartPanel != null) {
+            panel.remove(cartPanel);
+            cartPanel = null;
+            panel.revalidate();
+            panel.repaint();
+        }
     }
 }

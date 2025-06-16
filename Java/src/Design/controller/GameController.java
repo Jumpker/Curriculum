@@ -17,6 +17,7 @@ public class GameController {
     private EventManager eventManager;
     private SceneManager sceneManager;
     private TrapManager trapManager;
+    private VehicleManager vehicleManager;
     
     /**
      * 构造函数
@@ -27,6 +28,7 @@ public class GameController {
         this.model = model;
         this.eventManager = eventManager;
         this.trapManager = new TrapManager(model, eventManager);
+        this.vehicleManager = new VehicleManager(model, eventManager);
         
         // 初始化游戏
         initializeGame();
@@ -159,7 +161,8 @@ public class GameController {
      * 伐木
      */
     public void chopWood() {
-        model.increaseResource("木头", 10);
+        int woodAmount = vehicleManager.getWoodGainAmount();
+        model.increaseResource("木头", woodAmount);
         eventManager.notifyResourceChangeListeners(model.getResources());
         addMessage("林地上散落着枯枝败叶.");
     }
@@ -196,11 +199,19 @@ public class GameController {
      * 建造货车
      */
     public void buildCart() {
+        if (vehicleManager.hasCart()) {
+            addMessage("已经有一辆货车了，不需要再建造.");
+            return;
+        }
+        
         if (model.getResource("木头") >= 30) {
-            model.decreaseResource("木头", 30);
-            model.increaseBuilding("货车");
-            eventManager.notifyResourceChangeListeners(model.getResources());
-            addMessage("货车可以帮助运载更多的木头.");
+            if (vehicleManager.buildCart()) {
+                addMessage("货车可以帮助运载更多的木头.");
+                addMessage("摇摇晃晃的货车满载从森林运出木头.");
+                
+                // 通知建筑面板更新（移除货车按钮）
+                eventManager.notifyBuildingChangeListeners(model.getBuildings());
+            }
         } else {
             addMessage("木头不够了.");
         }

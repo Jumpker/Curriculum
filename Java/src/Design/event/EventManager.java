@@ -107,4 +107,37 @@ public class EventManager {
     public void notifyGamePhaseChangeListeners(boolean isPhase2) {
         fireGamePhaseChanged(isPhase2);
     }
+    
+    // 建筑变化监听器列表
+    private List<Consumer<Map<String, Integer>>> buildingChangeListeners = new ArrayList<>();
+    
+    /**
+     * 添加建筑变化监听器
+     */
+    public void addBuildingChangeListener(Consumer<Map<String, Integer>> listener) {
+        buildingChangeListeners.add(listener);
+    }
+    
+    /**
+     * 移除建筑变化监听器
+     */
+    public void removeBuildingChangeListener(Consumer<Map<String, Integer>> listener) {
+        buildingChangeListeners.remove(listener);
+    }
+    
+    /**
+     * 通知所有建筑变化监听器
+     */
+    public void fireBuildingChanged(Map<String, Integer> buildings) {
+        for (Consumer<Map<String, Integer>> listener : buildingChangeListeners) {
+            listener.accept(buildings);
+        }
+    }
+    
+    /**
+     * 通知所有建筑变化监听器（别名方法，与fireBuildingChanged功能相同）
+     */
+    public void notifyBuildingChangeListeners(Map<String, Integer> buildings) {
+        fireBuildingChanged(buildings);
+    }
 }

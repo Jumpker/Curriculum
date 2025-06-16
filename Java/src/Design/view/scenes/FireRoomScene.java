@@ -75,8 +75,6 @@ public class FireRoomScene implements Scene {
             // 获取SceneManager实例
             if (sceneManager == null) {
                 // 从controller获取SceneManager实例
-                // 这里假设GameController有一个getSceneManager方法
-                // 如果没有，需要通过其他方式获取
                 try {
                     // 尝试从FireRoomGame获取SceneManager实例
                     java.lang.reflect.Field field = controller.getClass().getDeclaredField("sceneManager");
@@ -93,11 +91,45 @@ public class FireRoomScene implements Scene {
                 BuildingPanel buildingPanel = sceneManager.getBuildingPanel();
                 ResourcePanel resourcePanel = sceneManager.getResourcePanel();
                 
-                // 添加到当前面板
-                if (buildingPanel != null) {
-                    panel.add(buildingPanel.getPanel(), BorderLayout.WEST);
+                // 获取中央组件(交互面板)
+                Component centerComponent = null;
+                for (Component comp : panel.getComponents()) {
+                    if (panel.getLayout() instanceof BorderLayout) {
+                        BorderLayout layout = (BorderLayout) panel.getLayout();
+                        if (comp == layout.getLayoutComponent(panel, BorderLayout.CENTER)) {
+                            centerComponent = comp;
+                            break;
+                        }
+                    }
                 }
                 
+                // 创建分割面板，上方放交互面板，下方放建筑面板
+                if (centerComponent != null && buildingPanel != null) {
+                    // 创建分割面板
+                    JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+                    splitPane.setTopComponent(centerComponent);
+                    splitPane.setBottomComponent(buildingPanel.getPanel());
+                    splitPane.setResizeWeight(0.5); // 设置分割比例为1:1
+                    splitPane.setDividerSize(5); // 设置分隔条大小
+                    splitPane.setContinuousLayout(true); // 拖动时连续布局
+                    splitPane.setBorder(null); // 移除边框
+                    
+                    // 移除原来的中央组件
+                    panel.remove(centerComponent);
+                    
+                    // 添加分割面板到中央
+                    panel.add(splitPane, BorderLayout.CENTER);
+                    
+                    // 设置建筑面板可见
+                    buildingPanel.getPanel().setVisible(true);
+                } else {
+                    // 如果无法获取中央组件，则使用原来的方式添加建筑面板
+                    if (buildingPanel != null) {
+                        panel.add(buildingPanel.getPanel(), BorderLayout.SOUTH);
+                    }
+                }
+                
+                // 添加资源面板到右侧
                 if (resourcePanel != null) {
                     panel.add(resourcePanel.getPanel(), BorderLayout.EAST);
                 }

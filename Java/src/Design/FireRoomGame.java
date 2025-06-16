@@ -19,6 +19,7 @@ public class FireRoomGame extends JFrame {
     private SceneManager sceneManager;
     private MessagePanel messagePanel;
     private JButton currentScaleButton;
+    private JButton longJourneyButton; // 添加为成员变量
     
     /**
      * 构造函数
@@ -72,10 +73,16 @@ public class FireRoomGame extends JFrame {
         
         // 创建消息面板（在控制器之前创建，确保能接收到初始消息）
         messagePanel = new MessagePanel(new GameController(model, eventManager) {
-            // 临时控制器，只用于获取事件管理器
+            // 临时控制器，只用于获取事件管理器，覆盖initializeGame方法防止重复初始化
             @Override
             public EventManager getEventManager() {
                 return eventManager;
+            }
+            
+            // 覆盖initializeGame方法，防止重复初始化
+            @Override
+            protected void initializeGame() {
+                // 不执行任何初始化操作
             }
         });
         
@@ -110,7 +117,11 @@ public class FireRoomGame extends JFrame {
         
         JButton fireRoomButton = new JButton("生火间");
         currentScaleButton = new JButton("   /   ");
-        JButton longJourneyButton = new JButton("漫漫尘途");
+        longJourneyButton = new JButton("漫漫尘途"); // 使用类成员变量
+        
+        // 初始阶段只显示生火间按钮，其他按钮隐藏
+        currentScaleButton.setVisible(false);
+        longJourneyButton.setVisible(false);
         
         topButtonPanel.add(fireRoomButton);
         topButtonPanel.add(currentScaleButton);
@@ -132,6 +143,10 @@ public class FireRoomGame extends JFrame {
         if (isPhase2) {
             // 更新当前规模按钮名称
             currentScaleButton.setText("静谧森林");
+            
+            // 在第二阶段显示所有按钮
+            currentScaleButton.setVisible(true);
+            longJourneyButton.setVisible(true);
         }
     }
     

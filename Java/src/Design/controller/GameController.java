@@ -33,7 +33,7 @@ public class GameController {
     /**
      * 初始化游戏
      */
-    private void initializeGame() {
+    protected void initializeGame() {
         // 添加初始木头资源（不显示）
         model.increaseResource("木头", 10);
         
@@ -106,7 +106,7 @@ public class GameController {
                 Timer strangerCalmTimer = new Timer(10000, ev3 -> {
                     addMessage("角落里的陌生人不再颤抖了，她的呼吸平静了下来.");
                     Timer strangerHelpTimer = new Timer(5000, ev4 -> {
-                        addMessage("那名陌生人站在火堆旁。她说她可以帮忙。她说她会建东西.");
+                        addMessage("那名陌生人站在火堆旁.她说她可以帮忙。她说她会建东西.");
                         // 触发游戏第二阶段
                         triggerGamePhase2();
                     });
@@ -172,7 +172,7 @@ public class GameController {
             eventManager.notifyResourceChangeListeners(model.getResources());
             addMessage("建造者在林中建起一栋小屋，他说消息很快就会流传出去.");
         } else {
-            addMessage("木头不够，无法建造小屋.");
+            addMessage("木头不够了.");
         }
     }
     
@@ -186,7 +186,7 @@ public class GameController {
             eventManager.notifyResourceChangeListeners(model.getResources());
             addMessage("陷阱越多，抓到的猎物就越多.");
         } else {
-            addMessage("木头不够，无法建造陷阱.");
+            addMessage("木头不够了.");
         }
     }
     
@@ -200,7 +200,7 @@ public class GameController {
             eventManager.notifyResourceChangeListeners(model.getResources());
             addMessage("货车可以帮助运载更多的木头.");
         } else {
-            addMessage("木头不够，无法建造货车.");
+            addMessage("木头不够了.");
         }
     }
     

@@ -13,6 +13,7 @@ public class CurrentScaleScene implements Scene {
     private JPanel panel;
     private GameController controller;
     private JPanel activeEventPanel;
+    private CooldownButton checkTrapsButton; // 查看陷阱按钮
     
     /**
      * 构造函数
@@ -62,6 +63,18 @@ public class CurrentScaleScene implements Scene {
             controller.chopWood();
         });
         
+        // 创建"查看陷阱"按钮（初始隐藏）
+        checkTrapsButton = new CooldownButton("查看陷阱", 30); // 30秒冷却
+        checkTrapsButton.setVisible(false); // 初始隐藏
+        activeEventPanel.add(checkTrapsButton);
+        checkTrapsButton.addActionListener(e -> {
+            checkTrapsButton.startCooldown();
+            controller.checkTraps();
+        });
+        
+        // 监听资源变化以更新陷阱按钮可见性
+        controller.getEventManager().addResourceChangeListener(this::updateTrapButtonVisibility);
+        
         activeEventPanel.revalidate();
         activeEventPanel.repaint();
     }
@@ -74,5 +87,21 @@ public class CurrentScaleScene implements Scene {
     @Override
     public void update() {
         // 更新场景状态
+    }
+    
+    /**
+     * 更新陷阱按钮可见性
+     * @param resources 资源映射
+     */
+    private void updateTrapButtonVisibility(java.util.Map<String, Integer> resources) {
+        if (checkTrapsButton != null) {
+            int trapCount = controller.getTrapManager().getTrapCount();
+            boolean shouldShow = trapCount > 0;
+            if (checkTrapsButton.isVisible() != shouldShow) {
+                checkTrapsButton.setVisible(shouldShow);
+                activeEventPanel.revalidate();
+                activeEventPanel.repaint();
+            }
+        }
     }
 }

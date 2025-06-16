@@ -16,6 +16,7 @@ public class GameController {
     private GameModel model;
     private EventManager eventManager;
     private SceneManager sceneManager;
+    private TrapManager trapManager;
     
     /**
      * 构造函数
@@ -25,6 +26,7 @@ public class GameController {
     public GameController(GameModel model, EventManager eventManager) {
         this.model = model;
         this.eventManager = eventManager;
+        this.trapManager = new TrapManager(model, eventManager);
         
         // 初始化游戏
         initializeGame();
@@ -218,6 +220,21 @@ public class GameController {
      */
     public GameModel getModel() {
         return model;
+    }
+    
+    /**
+     * 获取陷阱管理器
+     * @return 陷阱管理器
+     */
+    public TrapManager getTrapManager() {
+        return trapManager;
+    }
+    
+    /**
+     * 检查陷阱
+     */
+    public void checkTraps() {
+        trapManager.checkTraps();
     }
     
     /**

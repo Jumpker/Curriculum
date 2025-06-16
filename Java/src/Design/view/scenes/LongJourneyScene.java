@@ -19,12 +19,10 @@ public class LongJourneyScene implements Scene {
         panel.add(new JLabel("漫漫尘途 敬请期待."));
     }
     
-    @Override
     public JPanel getPanel() {
         return panel;
     }
     
-    @Override
     public void update() {
         // 暂无需更新的内容
     }

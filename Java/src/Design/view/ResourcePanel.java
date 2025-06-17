@@ -27,7 +27,7 @@ public class ResourcePanel {
         // 初始化主面板
         panel = new JPanel();
         panel.setBackground(Color.WHITE);
-        panel.setBorder(BorderFactory.createTitledBorder("信息面板"));
+        panel.setBorder(BorderFactory.createTitledBorder("资源"));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setPreferredSize(new Dimension(250, panel.getPreferredSize().height));
         panel.setVisible(false); // 初始不可见，等待游戏阶段2触发
@@ -36,7 +36,7 @@ public class ResourcePanel {
         resourcesPanel = new JPanel();
         resourcesPanel.setBackground(Color.WHITE);
         resourcesPanel.setLayout(new BoxLayout(resourcesPanel, BoxLayout.Y_AXIS));
-        resourcesPanel.setBorder(BorderFactory.createTitledBorder("资源"));
+        resourcesPanel.setBorder(BorderFactory.createTitledBorder("仓库"));
         
         // 初始化建筑子面板
         buildingsPanel = new JPanel();
@@ -54,6 +54,9 @@ public class ResourcePanel {
         
         // 监听游戏阶段变化事件
         controller.getEventManager().addGamePhaseChangeListener(this::onGamePhaseChanged);
+        
+        // 监听场景名称变化事件
+        controller.getEventManager().addSceneNameChangeListener(this::onSceneNameChanged);
     }
     
     /**
@@ -88,6 +91,11 @@ public class ResourcePanel {
         // 更新建筑显示
         updateBuildings(buildings);
         
+        // 这三行是因为资源太少，导致子面板显示不全，故添加一个空的标签来占位
+        JLabel specialResourceLabel = new JLabel("                              ");
+        specialResourceLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        resourcesPanel.add(specialResourceLabel);
+
         // 刷新面板
         resourcesPanel.revalidate();
         resourcesPanel.repaint();
@@ -115,6 +123,12 @@ public class ResourcePanel {
             buildingsPanel.add(noBuildingsLabel);
         }
         
+        // 这三行是因为资源太少，导致子面板显示不全，故添加一个空的标签来占位
+        JLabel specialBuildingLabel = new JLabel("                              ");
+        specialBuildingLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        buildingsPanel.add(specialBuildingLabel);
+
+        // 刷新面板
         buildingsPanel.revalidate();
         buildingsPanel.repaint();
     }
@@ -145,6 +159,37 @@ public class ResourcePanel {
             
             // 初始化资源面板
             updateResources(controller.getModel().getResources());
+            
+            // 更新建筑子面板标题为"森林"
+            updateBuildingsPanelTitle("森林");
         }
+    }
+    
+    /**
+     * 场景名称变化处理
+     * @param sceneName 场景名称
+     */
+    private void onSceneNameChanged(String sceneName) {
+        if ("孤独小屋".equals(sceneName)) {
+            // 获取小屋数量
+            int hutCount = controller.getModel().getBuilding("小屋");
+            // 计算人数上限（每个小屋4人）
+            int populationLimit = hutCount * 4;
+            // 当前人数（初始为0）
+            int currentPopulation = 0;
+            
+            // 更新建筑子面板标题为"村落 X/Y"
+            updateBuildingsPanelTitle(String.format("村落 %d/%d", currentPopulation, populationLimit));
+        }
+    }
+    
+    /**
+     * 更新建筑子面板标题
+     * @param title 新标题
+     */
+    private void updateBuildingsPanelTitle(String title) {
+        buildingsPanel.setBorder(BorderFactory.createTitledBorder(title));
+         buildingsPanel.revalidate();
+         buildingsPanel.repaint();
     }
 }

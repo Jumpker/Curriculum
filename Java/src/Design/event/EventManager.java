@@ -140,4 +140,37 @@ public class EventManager {
     public void notifyBuildingChangeListeners(Map<String, Integer> buildings) {
         fireBuildingChanged(buildings);
     }
+    
+    // 场景名称变化监听器列表
+    private List<Consumer<String>> sceneNameChangeListeners = new ArrayList<>();
+    
+    /**
+     * 添加场景名称变化监听器
+     */
+    public void addSceneNameChangeListener(Consumer<String> listener) {
+        sceneNameChangeListeners.add(listener);
+    }
+    
+    /**
+     * 移除场景名称变化监听器
+     */
+    public void removeSceneNameChangeListener(Consumer<String> listener) {
+        sceneNameChangeListeners.remove(listener);
+    }
+    
+    /**
+     * 通知所有场景名称变化监听器
+     */
+    public void fireSceneNameChanged(String sceneName) {
+        for (Consumer<String> listener : sceneNameChangeListeners) {
+            listener.accept(sceneName);
+        }
+    }
+    
+    /**
+     * 通知所有场景名称变化监听器（别名方法，与fireSceneNameChanged功能相同）
+     */
+    public void notifySceneNameChangeListeners(String sceneName) {
+        fireSceneNameChanged(sceneName);
+    }
 }

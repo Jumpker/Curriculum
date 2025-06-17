@@ -176,6 +176,16 @@ public class GameController {
             model.increaseBuilding("小屋");
             eventManager.notifyResourceChangeListeners(model.getResources());
             addMessage("建造者在林中建起一栋小屋，他说消息很快就会流传出去.");
+            
+            // 检查是否是第一个小屋
+            if (model.getBuilding("小屋") == 1) {
+                // 切换到当前规模场景
+                if (sceneManager != null) {
+                    sceneManager.showScene(SceneManager.CURRENT_SCALE_SCENE);
+                }
+                // 通知场景名称变化为"孤独小屋"
+                eventManager.notifySceneNameChangeListeners("孤独小屋");
+            }
         } else {
             addMessage("木头不够了.");
         }

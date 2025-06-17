@@ -97,6 +97,9 @@ public class FireRoomGame extends JFrame {
         
         // 监听游戏阶段变化
         eventManager.addGamePhaseChangeListener(this::onGamePhaseChanged);
+        
+        // 监听场景名称变化
+        eventManager.addSceneNameChangeListener(this::onSceneNameChanged);
     }
     
     /**
@@ -141,7 +144,7 @@ public class FireRoomGame extends JFrame {
      */
     private void onGamePhaseChanged(boolean isPhase2) {
         if (isPhase2) {
-            // 更新当前规模按钮名称
+            // 更新当前规模按钮名称（初始为静谧森林，后续可能会变化）
             currentScaleButton.setText("静谧森林");
             
             // 在第二阶段显示所有按钮
@@ -149,6 +152,16 @@ public class FireRoomGame extends JFrame {
             longJourneyButton.setVisible(true);
         }
     }
+    
+    /**
+     * 场景名称变化处理
+     */
+    private void onSceneNameChanged(String sceneName) {
+          if ("孤独小屋".equals(sceneName)) {
+              // 更新当前规模按钮名称
+              currentScaleButton.setText("孤独小屋");
+          }
+      }
     
     /**
      * 主方法

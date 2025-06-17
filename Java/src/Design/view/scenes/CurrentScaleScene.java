@@ -33,6 +33,8 @@ public class CurrentScaleScene implements Scene {
      * 初始化组件
      */
     private void initializeComponents() {
+
+        
         // 交互面板 (中央)
         JPanel interactionPanel = new JPanel(new GridLayout(2, 1)); // 两部分
         interactionPanel.setBackground(Color.WHITE);
@@ -88,6 +90,8 @@ public class CurrentScaleScene implements Scene {
     public void update() {
         // 更新场景状态
     }
+    
+
     
     /**
      * 更新陷阱按钮可见性

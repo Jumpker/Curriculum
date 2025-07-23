@@ -5,7 +5,7 @@ using namespace std;
 stack<char> symbol;
 stack<int> state;
 char sen[50];
-char sym[12][6]={//ç¬¦å·è¡¨
+char sym[12][6]={//·ûºÅ±í
    {'s','e','e','s','e','e'},
    {'e','s','e','e','e','a'},
    {'r','r','s','r','r','r'},
@@ -19,7 +19,7 @@ char sym[12][6]={//ç¬¦å·è¡¨
    {'r','r','r','r','r','r'},
    {'r','r','r','r','r','r'}
 };
-char snum[12][6]={//æ•°å­—è¡¨
+char snum[12][6]={//Êı×Ö±í
 {5,1,1,4,2,1},
 {3,6,5,3,2,0},
 {2,2,7,2,2,2},
@@ -33,7 +33,7 @@ char snum[12][6]={//æ•°å­—è¡¨
 {3,3,3,3,3,3},
 {5,5,5,5,5,5}
 };
-int go2[12][3]={//gotoè¡¨
+int go2[12][3]={//goto±í
 {1,2,3},
 {0,0,0},
 {0,0,0},
@@ -47,7 +47,7 @@ int go2[12][3]={//gotoè¡¨
 {0,0,0},
 {0,0,0}
 };
-void action(int i,char *&a,char &how,int &num,char &A,int &b)//actionå‡½æ•°[i,a]
+void action(int i,char *&a,char &how,int &num,char &A,int &b)//actionº¯Êı[i,a]
 {
 int j;
 switch(*a)
@@ -119,30 +119,30 @@ case 'F':
    return go2[t][2];break;
 }
 }
-void error(int i,int j,char *&a)//errorå¤„ç†å‡½æ•°
+void error(int i,int j,char *&a)//error´¦Àíº¯Êı
 {
 switch(j)
 {
-case 1://æœŸæœ›è¾“å…¥idæˆ–å·¦æ‹¬å·,ä½†æ˜¯ç¢°åˆ°+,*,æˆ–$,å°±å‡è®¾å·²ç»è¾“å…¥idäº†,è½¬åˆ°çŠ¶æ€5
-   cout<<"error:ç¼ºå°‘è¿ç®—å¯¹è±¡id"<<endl;
-   symbol.push('i');//å¿…é¡»æœ‰è¿™ä¸ª,å¦‚æœå‡è®¾è¾“å…¥idçš„è¯,ç¬¦å·æ ˆé‡Œå¿…é¡»æœ‰....
+case 1://ÆÚÍûÊäÈëid»ò×óÀ¨ºÅ,µ«ÊÇÅöµ½+,*,»ò$,¾Í¼ÙÉèÒÑ¾­ÊäÈëidÁË,×ªµ½×´Ì¬5
+   cout<<"error:È±ÉÙÔËËã¶ÔÏóid"<<endl;
+   symbol.push('i');//±ØĞëÓĞÕâ¸ö,Èç¹û¼ÙÉèÊäÈëidµÄ»°,·ûºÅÕ»Àï±ØĞëÓĞ....
    printf("i\t\t"); 
    state.push(5);
    printf("5\t\t"); 
    break;
-case 2://ä»è¾“å…¥ä¸­åˆ é™¤å³æ‹¬å·
+case 2://´ÓÊäÈëÖĞÉ¾³ıÓÒÀ¨ºÅ
    a++;
-   cout<<"error:ä¸é…å¯¹çš„å³æ‹¬å·"<<endl;
+   cout<<"error:²»Åä¶ÔµÄÓÒÀ¨ºÅ"<<endl;
    break;
-case 3://æœŸæœ›ç¢°åˆ°+,ä½†æ˜¯è¾“å…¥idæˆ–å·¦æ‹¬å·,å‡è®¾å·²ç»è¾“å…¥ç®—ç¬¦+,è½¬åˆ°çŠ¶æ€6
-   cout<<"error:ç¼ºå°‘è¿ç®—ç¬¦"<<endl;
+case 3://ÆÚÍûÅöµ½+,µ«ÊÇÊäÈëid»ò×óÀ¨ºÅ,¼ÙÉèÒÑ¾­ÊäÈëËã·û+,×ªµ½×´Ì¬6
+   cout<<"error:È±ÉÙÔËËã·û"<<endl;
    symbol.push('+');
    printf("+\t\t"); 
    state.push(6);
    printf("6\t\t");
    break;
-case 4://ç¼ºå°‘å³æ‹¬å·,å‡è®¾å·²ç»è¾“å…¥å³æ‹¬å·,è½¬åˆ°çŠ¶æ€11
-   cout<<"error:ç¼ºå°‘å³æ‹¬å·"<<endl;
+case 4://È±ÉÙÓÒÀ¨ºÅ,¼ÙÉèÒÑ¾­ÊäÈëÓÒÀ¨ºÅ,×ªµ½×´Ì¬11
+   cout<<"error:È±ÉÙÓÒÀ¨ºÅ"<<endl;
    symbol.push(')');
    printf(")\t\t");
    state.push(11);
@@ -150,7 +150,7 @@ case 4://ç¼ºå°‘å³æ‹¬å·,å‡è®¾å·²ç»è¾“å…¥å³æ‹¬å·,è½¬åˆ°çŠ¶æ€11
    break;
 case 5:
    a++;
-   cout<<"error:*å·æ— æ•ˆ,åº”è¯¥è¾“å…¥+å·!"<<endl;
+   cout<<"error:*ºÅÎŞĞ§,Ó¦¸ÃÊäÈë+ºÅ!"<<endl;
 case 6:
    a++;
 }
@@ -164,21 +164,21 @@ char how;
 int num;
 int b;
 char A;
-cout<<"è¯·è¾“å…¥è¡¨è¾¾å¼(ä»¥iè¡¨ç¤ºæ ‡è¯†ç¬¦,ä»¥#ç»“æŸ):"<<endl; 
+cout<<"ÇëÊäÈë±í´ïÊ½(ÒÔi±íÊ¾±êÊ¶·û,ÒÔ#½áÊø):"<<endl; 
 while(1)
 {
    cin>>sen;
    a=sen;
-   state.push(0);//å…ˆè¾“å…¥0çŠ¶æ€ 
-   printf("\t\t-------åˆ†æè¿‡ç¨‹-------\n"); 
-   printf("ç¬¦å·æ ˆæ ˆé¡¶\tçŠ¶æ€æ ˆæ ˆé¡¶\tå½“å‰è¯»å…¥ç¬¦å·\tåˆ†æåŠ¨ä½œ\n"); 
+   state.push(0);//ÏÈÊäÈë0×´Ì¬ 
+   printf("\t\t-------·ÖÎö¹ı³Ì-------\n"); 
+   printf("·ûºÅÕ»Õ»¶¥\t×´Ì¬Õ»Õ»¶¥\tµ±Ç°¶ÁÈë·ûºÅ\t·ÖÎö¶¯×÷\n"); 
    printf(" \t\t0\t\t"); 
    while(*a!='\0')
    {
     b=0;num=0;how='\0';A='\0';
     s=state.top();
     action(s,a,how,num,A,b);
-    if(how=='s')//ç§»è¿›
+    if(how=='s')//ÒÆ½ø
     {
      cout<<"Shift"<<endl;
      symbol.push(*a);
@@ -187,7 +187,7 @@ while(1)
      printf("%d\t\t",num);
      a++;
     }
-    else if(how=='r')//è§„çº¦
+    else if(how=='r')//¹æÔ¼
     {
      for(int i=0;i<b;i++)
      {
@@ -202,14 +202,15 @@ while(1)
      state.push(go(t,A));
       printf("%d\t\t",go(t,A));
     }
-    else if(how=='a')//æ¥å—
+    else if(how=='a')//½ÓÊÜ
      break;
     else
     {
-     error(s,num,a);//é”™è¯¯å¤„ç†    
+     error(s,num,a);//´íÎó´¦Àí    
     }
    }
    cout<<"accept"<<endl;
 }
 return 0;
 }
+

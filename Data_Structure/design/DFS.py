@@ -3,12 +3,37 @@ import time
 
 mc = Minecraft.create()
 
+# 在mc中创建棋盘
+def create_chessboard(Size):
+    player_pos = mc.player.getTilePos()
+    # 创建棋盘主体（黑白格子用不同方块区分）
+    for x in range(Size):
+        for y_board in range(Size):  # 避免与y坐标变量冲突，改用y_board
+            if (x + y_board) % 2 == 0:
+                mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + y_board, 'WHITE_WOOL')
+            else:
+                mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + y_board, 'BLACK_WOOL')
 
+    # 添加玻璃边框（棋盘周围一圈, 好看一点）
+    for x in [-1, Size]:  # 先左再右两侧边框
+        for z in range(Size):
+            mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + z, 'GLASS')
+    for z in [-1, Size]:  # 先前再后两侧边框
+        for x in range(Size):
+            mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + z, 'GLASS')
+    mc.postToChat("棋盘已生成，请输入初始位置")
+
+
+# 计算下一步的下一步有多少种可能（启发式算法使用）
 def calculateNextSteps(Board, Size, x, y, mv):
+    # 数组每个单元里存储下一步的下一步有多少种可能
+    # 因为下一步有8种可能所以数组长度为8
     next_steps = [0] * 8
     for i in range(8):
+        # nx, ny 为下一步的位置
         nx = x + mv[i][0]
         ny = y + mv[i][1]
+        # 下一步在棋盘中并且没走过
         if 0 <= nx < Size and 0 <= ny < Size and Board[nx][ny] == 0:
             next_steps[i] = 0
             for j in range(8):
@@ -20,7 +45,7 @@ def calculateNextSteps(Board, Size, x, y, mv):
             next_steps[i] = -1
     return next_steps
 
-
+# 对下一步的落脚点进行排序（启发式算法使用）
 def sortDirections(next_steps):
     indices = list(range(8))
     for i in range(8):
@@ -29,25 +54,6 @@ def sortDirections(next_steps):
                 indices[i], indices[j] = indices[j], indices[i]
     return indices
 
-
-def create_chessboard(Size):
-    player_pos = mc.player.getTilePos()
-    # 创建棋盘主体（黑白格子用不同方块区分）
-    for x in range(Size):
-        for y_board in range(Size):  # 避免与y坐标变量冲突，改用y_board
-            if (x + y_board) % 2 == 0:
-                mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + y_board, 'WHITE_WOOL')
-            else:
-                mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + y_board, 'BLACK_WOOL')
-
-    # 添加玻璃边框（棋盘周围一圈）
-    for x in [-1, Size]:  # 左右两侧边框
-        for z in range(Size):
-            mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + z, 'GLASS')
-    for z in [-1, Size]:  # 前后两侧边框
-        for x in range(Size):
-            mc.setBlock(player_pos.x + x, player_pos.y - 1, player_pos.z + z, 'GLASS')
-    mc.postToChat("棋盘已生成，请输入初始位置")
 
 
 def DFS(Board, Size, x, y, step, player_pos):
@@ -91,7 +97,7 @@ def main():
     create_chessboard(n)
     player_pos = mc.player.getTilePos()
 
-    x, y = map(int, input("请输入初始位置（1 1为左上角）：").split())
+    x, y = map(int, input("请输入初始位置（1,1为左上角）：").split())
     if x < 1 or x > n or y < 1 or y > n:
         print("位置无效！")
         return
@@ -105,18 +111,18 @@ def main():
     mc.postToChat("正在探索路径中...")
 
     result = DFS(Board, n, x, y, 1, player_pos)
-    print("路径（1为存在，0为不存在）：", 1 if result else 0)
+    print("路径%s！", "存在" if result else "不存在")
     if result:
         mc.postToChat("路径存在！")
-        path_matrix_str = "\n".join(["  ".join(map(str, row)) for row in Board])  # 将制表符替换为空格
         mc.postToChat("路径矩阵如下：")
-        for line in path_matrix_str.splitlines():
+        for row in Board:
+            line = ""
+            for val in row:
+                line += str(val) + "  "
             mc.postToChat(line)
     else:
         # 路径不存在时，输出路径不存在!
         mc.postToChat("路径不存在!")
-    for row in Board:
-        print("\t".join(map(str, row)))
 
 
 if __name__ == "__main__":

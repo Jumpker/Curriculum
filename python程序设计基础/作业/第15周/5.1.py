@@ -1,2 +1,0 @@
-import mcpi.block as blockmc = minecraft.Minecraft.create()def buildBridge():    pos = mc.player.getTilePos()    b = mc.getBlock(pos.x, pos.y-1, pos.z)    if b == block.AIR.id or b == block.WATER_FLOWING.id or b == block.WATER_STATIONARY.id:        mc.setBlock(pos.x, pos.y-1, pos.z, block.GLASS.id)
-while True:    buildBridge()

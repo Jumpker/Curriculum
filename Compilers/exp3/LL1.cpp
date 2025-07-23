@@ -1,54 +1,50 @@
 #include<iostream>
-#include<vector>
 #include<stack>
 #include<string>
-#include <windows.h> // For SetConsoleOutputCP
-#include <io.h>      // For _setmode
-#include <fcntl.h>   // For _O_U8TEXT
 using namespace std;
-string Production[10]={"E->TG","G->+TG","G->-TG","G->ε","T->FS","S->*FS","S->/FS","S->ε","F->(E)","F->i"};//产生式集合
-char termina[8]={'+','-','*','/','(',')','i','#'};//终结符集合
-char nontermina[5]={'E','T','G','F','S'};//非终结符集合
-int count=0;//记录当前进行处理的输入字符串字符位置
-int line=0;//记录处理的步骤数
-string stacktd="#E";//记录栈中内容
-stack <char> Stack;//创建一个栈
-char ch,ch1;//ch记录栈顶字符，ch1记录当前进行处理的输入字符串字符
+string Production[10]={"E->TG","G->+TG","G->-TG","G->��","T->FS","S->*FS","S->/FS","S->��","F->(E)","F->i"};//����ʽ����
+char termina[8]={'+','-','*','/','(',')','i','#'};//�ս������
+char nontermina[5]={'E','T','G','F','S'};//���ս������
+int count=0;//��¼��ǰ���д����������ַ����ַ�λ��
+int line=0;//��¼�����Ĳ�����
+string stacktd="#E";//��¼ջ������
+stack <char> Stack;//����һ��ջ
+char ch,ch1;//ch��¼ջ���ַ���ch1��¼��ǰ���д����������ַ����ַ�
 
-int Istermina(char c){//判断其是否为终结符
+int Istermina(char c){//�ж����Ƿ�Ϊ�ս��
 	for(int i=0;i<8;i++){
     if(termina[i]==c)
 		return 1;
 	}
 	return 0;
 }
-int Isnontermina(char c){//判断其是否为非终结符
+int Isnontermina(char c){//�ж����Ƿ�Ϊ���ս��
 	for(int i=0;i<5;i++){
     if(nontermina[i]==c)
 		return 1;
 	}
 	return 0;
 }
-void OutputString(string s){//输出未处理的字符串
+void OutputString(string s){//���δ�������ַ���
 	for(int i=count;i<s.size();i++)
 		cout<<s.at(i);
 }
-void Analyse(string s){//分析过程
+void Analyse(string s){//��������
     s=s+"#";
-	Stack.push('#');//初始化
+	Stack.push('#');//��ʼ��
     Stack.push('E');
 	cout<<line<<"\t"<<stacktd<<"\t";
     OutputString(s);
-    cout<<"\t\t"<<"\t\t"<<"初始化"<<endl;
+    cout<<"\t\t"<<"\t\t"<<"��ʼ��"<<endl;
 	line++;
-	while(count<s.size()){//循环条件，输入串是否被处理完全
+	while(count<s.size()){//ѭ�����������봮�Ƿ񱻴�����ȫ
 
     ch=Stack.top();
 	ch1=s.at(count);
 
 	if(Istermina(ch)){
 		if(ch==ch1&&ch!='#'){
-         stacktd.erase(stacktd.length()-1);//删除stacktd字符串的尾字母
+         stacktd.erase(stacktd.length()-1);//ɾ��stacktd�ַ�����β��ĸ
 		 Stack.pop();
 	     count++;
 		 cout<<line<<"\t"<<stacktd<<"\t";
@@ -57,22 +53,22 @@ void Analyse(string s){//分析过程
 
 		}
 		else if(ch='#'){
-			cout<<"acc"<<"\t分析成功"<<endl;//表示分析完成，输入串为该文法的正确句型
+			cout<<"acc"<<"\t�����ɹ�"<<endl;//��ʾ������ɣ����봮Ϊ���ķ�����ȷ����
 			count=s.size();
 		}
 		else{
-        cout<<"\tError"<<endl;//表示输入串为该文法的非法句型
-		count=s.size();//使循环结束
+        cout<<"\tError"<<endl;//��ʾ���봮Ϊ���ķ��ķǷ�����
+		count=s.size();//ʹѭ������
 
 		}
 	}
-	else switch(ch){//switch语句，具体分析非终结符面对输入串的具体执行情况
+	else switch(ch){//switch��䣬����������ս��������봮�ľ���ִ�����
                case'E':{if(ch1=='('||ch1=='i'){
 				           stacktd.erase(stacktd.length()-1);
                            Stack.pop();
 						   Stack.push('G');
                            Stack.push('T');
-						   stacktd=stacktd+"GT";//将输入栈中的内容加到stacktd中
+						   stacktd=stacktd+"GT";//������ջ�е����ݼӵ�stacktd��
 						   cout<<line<<"\t"<<stacktd<<"\t";
 		                   OutputString(s);
 		                   cout<<"\t\t"<<"E->TG"<<"\t\t"<<"POP,PUSH(GT)"<<endl;
@@ -129,7 +125,7 @@ void Analyse(string s){//分析过程
 					   Stack.pop();
 					   cout<<line<<"\t"<<stacktd<<"\t";
 		               OutputString(s);
-		               cout<<"\t\t"<<"G->ε"<<"\t\t"<<"POP"<<endl;
+		               cout<<"\t\t"<<"G->��"<<"\t\t"<<"POP"<<endl;
 
 				   }
 				   else{
@@ -190,7 +186,7 @@ void Analyse(string s){//分析过程
 					   Stack.pop();
 					   cout<<line<<"\t"<<stacktd<<"\t";
 		               OutputString(s);
-		               cout<<"\t\t"<<"S->ε"<<"\t\t"<<"POP"<<endl;
+		               cout<<"\t\t"<<"S->��"<<"\t\t"<<"POP"<<endl;
 				   }
 				   else{
 						cout<<"\tError"<<endl;
@@ -207,38 +203,35 @@ void Analyse(string s){//分析过程
 	}
 }
 int main(){
-    // 设置控制台输出为UTF-8编码
-    SetConsoleOutputCP(CP_UTF8);
-    _setmode(_fileno(stdout), _O_U8TEXT);
-
-	cout<<"************************LL(1)分析*************************"<<endl;
-    cout<<"本分析文法产生式为"<<endl;
+	cout<<"************************LL(1)����*************************"<<endl;
+    cout<<"�������ķ�����ʽΪ"<<endl;
 	for(int j=0;j<10;j++)
 		cout<<Production[j]<<endl;
-	cout<<"************************LL(1)分析表*************************"<<endl;
+	cout<<"************************LL(1)������*************************"<<endl;
 	cout<<"\t+\t-\t*\t/\t(\t)\ti\t#"<<endl;
 	cout<<"E\t\t\t\t\tE->TG\t\tE->TG"<<endl;
 	cout<<"T\t\t\t\t\tT->FS\t\tT->FS"<<endl;
-	cout<<"G\tG->+TG\tG->-TG\t\t\t\tG->ε\t\tG->ε"<<endl;
+	cout<<"G\tG->+TG\tG->-TG\t\t\t\tG->��\t\tG->��"<<endl;
     cout<<"F\t\t\t\t\tF->(E)\t\tF->i"<<endl;
-	cout<<"S\tS->ε\tS->ε\tS->*FS\tS->/FS\t\tS->ε\t\tS->ε"<<endl;
+	cout<<"S\tS->��\tS->��\tS->*FS\tS->/FS\t\tS->��\t\tS->��"<<endl;
 	string Sstring;
 	char T;
 do{
-	cout<<"输入字符串"<<endl;
-	cin>>Sstring;//输入要分析的字符串
-	cout<<"************************现进行如下分析*************************"<<endl;
-	cout<<"步骤"<<"\t"<<"分析栈"<<"\t"<<"剩余输入串"<<"\t"<<"所用产生式"<<"\t"<<"动作"<<endl;
+	cout<<"�����ַ���"<<endl;
+	cin>>Sstring;//����Ҫ�������ַ���
+	cout<<"************************�ֽ������·���*************************"<<endl;
+	cout<<"����"<<"\t"<<"����ջ"<<"\t"<<"ʣ�����봮"<<"\t"<<"���ò���ʽ"<<"\t"<<"����"<<endl;
     Analyse(Sstring);
-	count=0;//记录当前进行处理的输入字符串字符位置
-    line=0;//记录处理的步骤数
+	count=0;//��¼��ǰ���д����������ַ����ַ�λ��
+    line=0;//��¼�����Ĳ�����
     stacktd="#E";
     while(!Stack.empty()){
 		cout<<Stack.top();
 		Stack.pop();
 	}
-    cout<<"是否继续分析,Y或y继续"<<endl;
+    cout<<"�Ƿ��������,Y��y����"<<endl;
 	cin>>T;
 	}while(T=='y'||T=='Y');
     return 0;
 }
+

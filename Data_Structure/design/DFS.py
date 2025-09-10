@@ -61,7 +61,7 @@ def DFS(Board, Size, x, y, step, player_pos):
 
     if step == Size * Size:
         Board[x][y] = step
-        # 最终位置用金块标记（属于已有步骤）
+        # 最终位置用金块标记
         mc.setBlock(player_pos.x + x, player_pos.y, player_pos.z + y, 'GOLD_BLOCK')
         return True
 
@@ -97,10 +97,11 @@ def main():
     create_chessboard(n)
     player_pos = mc.player.getTilePos()
 
-    x, y = map(int, input("请输入初始位置（1,1为左上角）：").split())
+    x, y = map(int, input("请输入初始位置（1 1为左上角）：").split())
     if x < 1 or x > n or y < 1 or y > n:
         print("位置无效！")
         return
+        
     x -= 1  # 转换为0索引
     y -= 1
 

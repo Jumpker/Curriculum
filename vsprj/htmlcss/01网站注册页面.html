@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <style>
+        .logo {
+            float: left;
+            width: 33%;
+            background-color: cadetblue;
+            border-width: 1px;
+            border-style: solid;
+            border-color: red;
+            height: 60px;
+            line-height: 60px;
+            border: 1px solid red;
+        }
+
+        .amenu {
+            color: white;
+            text-decoration: none;
+            height: 50px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+			1. 总共是5部分
+			2. 第一部分是LOGO部分
+			3. 第二部分是导航菜单
+			4. 第三部分是注册部分
+			5. 第四部分是FOOTER图片
+			6. 第五部分是一堆超链接
+		-->
+    <!--2. 第一部份: LOGO部分: 嵌套三个div-->
+    <div>
+        <div class="logo">
+            <img src="./img/logo.png" height="100%" />
+        </div>
+        <div class="logo">
+            <img src="./img/header.jpg" />
+        </div>
+        <div class="logo">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">购物车</a>
+        </div>
+    </div>
+
+    <!--清除浮动-->
+    <div style="clear: both;"></div>
+    <!--3. 第二部分是导航菜单-->
+    <div style="background-color: black; height: 50px;">
+        <a href="#" class="amenu">首页</a>
+        <a href="#" class="amenu">手机数码</a>
+        <a href="#" class="amenu">电脑办公</a>
+        <a href="#" class="amenu">鞋靴箱包</a>
+        <a href="#" class="amenu">香烟酒水</a>
+    </div>
+
+    <!--4. 第三部分是注册部分-->
+    <div style="background: url(./img/regist_bg.jpg);height: 500px;">
+
+        <div
+            style="border: 5px solid darkgray;width: 50%;height: 500px ; background-color: white; margin:20px auto">
+            <div style="width: 60%; margin: 100px auto;">
+                <!--4.1 标题-->
+                <div>
+                    <font color="blue" size="6">会员注册</font>USER REGISTER
+                </div>
+                <!--4.2 用户输入部分-->
+                <div style="margin-top: 25px;">
+                    <!--4.2.1 左边标签-->
+                    <div style="float: left; width: 30%;">
+                        用户名:<br>
+                        密码:<br>
+                        确认密码:<br>
+                        email:<br>
+                        姓名:<br>
+                        性别:<br>
+                        出生日期:</br>
+                        email:<br>
+                        验证码:<br>
+                    </div>
+                    <!--4.2.2 右边输入部分-->
+                    <div style="float: left; width: 70%;">
+                        <input type="text" />
+                        <input type="password" />
+                        <input type="password" />
+                        <input type="email" />
+                        <input type="text" />
+                        <div>
+                            <input type="radio" name="sex" /> 男
+                            <input type="radio" name="sex" /> 女
+                            <input type="radio" name="sex" /> 妖
+                        </div>
+                        <input type="date" /></br>
+                        <input type="text" />
+                        <img src="./img/verifycode.jpg" />
+                    </div>
+                </div>
+
+
+                <!--清除浮动-->
+                <div style="clear: both;"></div>
+
+                <!--4.3 按钮部分-->
+                <div style="margin-top: 20px; text-align: center;">
+                    <input type="submit" value="注册" />
+                    <input type="reset" value="取消" />
+                </div>
+            </div>
+        </div>
+
+        <!--5. 第四部分是FOOTER图片-->
+        <div>
+            <img src="./img/footer.jpg" width="100%" />
+        </div>
+        <!--6. 第四部分: 放一堆超链接-->
+        <div style="text-align: center;">
+
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">招贤纳士</a>
+            <a href="#">法律声明</a>
+            <a href="#">友情链接</a>
+            <a href="#">支付方式</a>
+            <a href="#">配送方式</a>
+            <a href="#">服务声明</a>
+            <a href="#">广告声明</a>
+
+            <br />
+
+            Copyright © 2020-2021 广东财经大学 版权所有
+        </div>
+
+
+</body>
+
+</html>

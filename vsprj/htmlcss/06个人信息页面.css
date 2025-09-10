@@ -1,0 +1,46 @@
+/* 头像区域的样式 */
+.top {
+  background: #3a4861;
+  width: 100%;
+  padding: 15px 0;
+}
+.top .user-img {
+  width: 126px;
+  margin: 0 auto;
+}
+.top img {
+  /* width: 126px;
+    height: 126px; */
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid #777f92;
+}
+/* 详细信息区域的样式 */
+
+.menu .item {
+  /* vertical-align: middle; */
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid #ccc;
+  padding: 0 20px;
+  font-size: 17px;
+}
+
+.menu .item:nth-child(5) {
+  border-bottom: none;
+} 
+
+
+/*
+.menu .item {
+  height: 48px;
+  line-height: 48px;
+  padding: 0 20px;
+  font-size: 17px;
+}
+
+.menu .item +.item {
+  border-top: 1px solid #ccc;
+}
+
+  */

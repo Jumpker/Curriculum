@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>购物车</title>
+	<style type="text/css">
+		span {
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div>
+			课程：<input type="text" name="" v-model='course'>
+			价钱：<input type="text" name="" v-model='price'>
+			<button @click='addcourse'>添加商品</button>
+		</div>
+		<ul>
+			<li v-for='(course,index) in courselist'>
+				课程名称：{{course.name}}---价格:{{course.price}}
+				<button @click='addtocart(index)'>添加到购物车</button>
+			</li>
+		</ul>
+		<div>
+			购物车
+			<table border="1">
+				<tr>
+					<th>选中</th>
+					<th>课程</th>
+					<th>价格</th>
+					<th>数量</th>
+					<th>金额</th>
+				</tr>
+				<tr v-for="(item,index) in cartarr">
+					<td><input type="checkbox" name="" v-model='item.active'></td>
+					<td>{{item.name}}</td>
+					<td>{{item.price}}</td>
+					<td>
+						<span @click='reducecount(index)'>-</span>
+						{{item.count}}
+						<span @click='addcount(index)'>+</span>
+
+					</td>
+					<td>{{item.count * item.price}}</td>
+				</tr>
+				<tr>
+					<td colspan='2'>选中的课程：{{activeCount}}/{{count}}</td>
+					<td colspan='4'>需付金额：{{totalpirce}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+	<script src="/vue.global.js"></script>
+
+	<script type="text/javascript">
+		var vm = Vue.createApp({
+			data() {
+				return {
+					courselist: [
+						{ name: 'springcloud', price: 20 },
+						{ name: 'vue', price: 30 },
+						{ name: 'js', price: 40 },
+						{ name: 'php', price: 50 },
+					],
+					course: '',
+					price: '',
+					cartarr: [],//购物车数组
+				}
+			},
+			//计算属性
+			computed: {
+				//已选中课程
+				activeCount() {
+					return this.cartarr.filter(v => v.active).length
+				},
+				//购物车存在多少项课程
+				count() {
+					return this.cartarr.length
+				},
+				//总价
+				totalpirce() {
+					let total = 0
+					this.cartarr.forEach(v => {
+						if (v.active) {
+							total += v.price * v.count
+						}
+					})
+					return total
+				}
+			},
+			watch: {
+				//监听购物车数组，每当监听到改变就存进本地存储做数据持久化
+				cartarr: {
+					handler() {
+						window.localStorage.setItem('cart', JSON.stringify(this.cartarr))
+					},
+					deep: true
+				}
+			},
+			methods: {
+				//添加课程
+				addcourse() {
+					//插入数据到我们的商品库
+					this.courselist.push({ name: this.course, price: this.price })
+					//清空我们刚输入的商品信息
+					this.course = ''
+					this.price = ''
+				},
+				//添加到购物车
+				addtocart(index) {
+					const goods = this.courselist[index]
+					const result = this.cartarr.find(v => v.name == goods.name)
+					if (result) {
+						result.count += 1
+					} else {
+						this.cartarr.push({ ...goods, count: 1, active: true })
+					}
+				},
+				//增加购物车商品数量
+				addcount(index) {
+					this.cartarr[index].count++
+				},
+				//减少购物车商品数量
+				reducecount(index) {
+					if (this.cartarr[index].count > 1) {
+						this.cartarr[index].count--
+					} else {
+						if (window.confirm(`是否删除${this.cartarr[index].name}?`)) {
+							this.cartarr.splice(index, 1)
+						}
+					}
+				}
+			},
+			created() {
+				//利用本地存储做数据持久化  获取本地存储数据
+				var ss = window.localStorage.getItem('cart');
+				if (ss == null) ss = "[]";
+				this.cartarr = JSON.parse(ss)
+				console.log(this.cartarr);
+
+			}
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

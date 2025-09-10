@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站首页</title>
+    <style>
+ 			.logo{
+				float: left;
+				width: 33%;
+                /* background-color:cadetblue; */
+				/* border-width: 1px; */
+				/* border-style: solid; */
+				/* border-color: red; */
+				height: 60px;
+				line-height: 60px;
+				/* border: 1px solid red; */
+                padding:0;
+			}
+
+			.amenu{
+				color: white;
+				text-decoration: none;
+				height: 50px;
+				line-height: 50px;
+			}
+
+            .product{
+				float: left; 
+                text-align: center; 
+                width: 16%; 
+                height: 240px;
+			}
+           
+       
+    </style>
+</head>
+<body style="background-color: mintcream;">
+<!--
+    1. 创一个最外层div    margin: 0 auto; 让内容居中显示
+    2. 第一部份: LOGO部分: 嵌套三个div
+    3. 第二部分: 导航栏部分 : 放置5个超链接
+    4. 第三部分: 轮播图 
+    5. 第四部分: 
+    6. 第五部分: 直接放一张图片
+    7. 第六部分: 抄第四部分的
+    8. 第七部分: 放置一张图片
+    9. 第八部分: 放一堆超链接
+ -->
+    <div style="width: 80%;  margin: 0 auto;" >
+ 			<!--2. 第一部份: LOGO部分: 嵌套三个div-->
+             <div style="width: 100%;height:60px; background-color:cadetblue;">
+				<div class="logo">
+					<img src="./img/logo.png" height="100%"/>
+				</div>
+				<div class="logo">
+					<img src="./img/header.jpg" style="margin-top: 5px;"/>
+				</div>
+				<div class="logo">
+					<a href="#">登录</a>
+					<a href="#">注册</a>
+					<a href="#">购物车</a>
+				</div>
+            </div>
+
+ 			<!--清除浮动-->
+             <div style="clear: both;"></div>
+           
+ 			<!--3. 第二部分: 导航栏部分 : 放置5个超链接-->
+             <div style="background-color: black; height: 50px;">
+				<a href="#" class="amenu">首页</a>
+				<a href="#" class="amenu">手机数码</a>
+				<a href="#" class="amenu">电脑办公</a>
+				<a href="#" class="amenu">鞋靴箱包</a>
+				<a href="#" class="amenu">香烟酒水</a>
+			</div>
+           
+			<!--4. 第三部分: 轮播图--> 
+			<div>
+				<img src="./img/1.jpg" width="100%" height="400px"/>
+            </div>
+            
+ 			<!--5. 第四部分:--> 
+             <div>
+				<div><h2>最新商品<img src="./img/title2.jpg"/></h2></div>
+				
+				<!--5.1 左侧广告图 宽度占比15%-->
+				<div style="width: 15%; height: 480px;  float: left;">
+					<img src="./products/big01.jpg" width="100%" height="100%"/>
+				</div>
+				<!--
+                	5.2 右侧商品  宽度占比84%-  每行六个商品 100/6=16%
+                -->
+
+                <div style="width: 84%; height: 480px;float: left;">
+
+				<!--
+                	5.2.1 主推商品  宽度占比50%-
+                -->
+                <div style="height: 240px; width: 50%; float: left;">
+                		<img src="./products/middle01.jpg" height="100%" width="100%" />
+                </div>
+                <!--
+                	5.2.2 其余商品  宽度占比16%-
+                -->
+
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                <div class="product">
+                    <img src="./products/small08.jpg" />
+                    <p>高压锅</p>
+                    <p style="color: red;">$998</p>
+                </div>
+                </div>
+			</div>
+ 
+  			<!--清除浮动-->
+              <div style="clear: both;"></div>
+
+              <!--8. 第七部分: 放置一张图片-->
+             <div>
+				<img src="./img/footer.jpg" width="100%"/>
+			</div>
+           
+			<!--9. 第八部分: 放一堆超链接-->
+			<div style="text-align: center;">
+				        
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">招贤纳士</a>
+                <a href="#">法律声明</a>
+                <a href="#">友情链接</a>
+                <a href="#">支付方式</a>
+                <a href="#">配送方式</a>
+                <a href="#">服务声明</a>
+                <a href="#">广告声明</a>
+                <br />
+                Copyright © 2020-2021 广东财经大学 版权所有
+        </div>
+    </div>
+</body>
+</html>

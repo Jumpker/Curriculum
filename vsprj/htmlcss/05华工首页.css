@@ -1,0 +1,648 @@
+/* 初始化样式 */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+}
+
+
+body {
+    background: #f9f7f8;
+}
+
+ul {
+    list-style: none;
+    /*去掉ul列表的黑实心点*/
+}
+
+a {
+    text-decoration: none;
+    /*去掉导航链接的下划横线*/
+    color: #333;
+}
+
+
+
+/*1 头部*/
+.wp-header{
+    background-color: #0c7ed9;
+    padding: 5px 0;
+}
+
+.wp-header .wp-inner{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.site-logo img {
+    width: 246px;
+    height: 105px;
+}
+
+.daohang2_box div {
+    margin-bottom: 10px;
+}
+
+.wp_nav {
+    display: flex;
+}
+
+.nav-item a span.item-name {
+    color: #a8c7ed;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.wp_nav li {
+    color: #a8c7ed;
+    height: 20px;
+    line-height: 20px;
+    /* padding: 0 8px 0 8px; */
+    /* border-right: 1px solid #a8c7ed;; */
+}
+
+.wp_nav li .mark {
+    /* color: #a8c7ed; */
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* .wp_nav li:nth-last-child(1){
+    border-right: none;
+} */
+
+
+.wp-navi .wp-menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fbfbfb;
+
+
+}
+
+.wp-navi .wp-menu .sub-menu {
+    display: none;
+}
+
+.wp-navi .wp-menu .menu-item a.menu-link {
+    display: inline-block;
+    padding: 0 20px;
+    height: 56px;
+    line-height: 56px;
+    color: #333333;
+    font-size: 16px;
+}
+
+.wp-navi .wp-menu .menu-item a.menu-link:hover {
+    text-decoration: none;
+    color: #64615c;
+}
+
+.menu-switch-arrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    transform: rotate(-45deg);
+    /*  通过将矩形旋转45度切掉一半来弄出下拉箭头 */
+    margin: 0 0 4px 0px;
+}
+
+
+.wp-focus {
+    width: 1366px;
+    height: 450px;
+    margin: 0 auto;
+}
+
+.wp-focus img {
+    width: 100%;
+}
+
+/* 主体开始*/
+.content1 {
+    width: 1200px;
+    margin: 25px auto;
+}
+
+.content1 .post-head .head-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .post-head .head-bar { position: relative;} */
+
+.content1 .post-body .post-news {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content1 .post-news .news-item {
+    width: 32%;
+}
+
+.content1 .post-news .news-item {
+    line-height: 24px;
+    vertical-align: top;
+    position: relative;
+}
+
+.content1 .fabu-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/bt_bg.png) repeat;
+    width: 100%;
+    min-height: 40px;
+}
+
+.item-meta.meta-title.fabu-title a {
+    padding: 8px 10px 8px 20px;
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.content2 {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.content2 .post-news {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.content2 .cbox {
+    width: 46%;
+    background: #ebebeb;
+    padding: 0.6% 1.5%;
+}
+
+
+.post-news .news-item {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.post-news .news-item .item-meta {
+    line-height: 33px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.dbox .dbox_con {
+    width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.dbox .dbox_con .post-news {
+    position: relative;
+    width: 381px;
+    height: 256px;
+}
+
+.dbox .dbox_con .meta-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/bt_bg.png) repeat;
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dbox .meta-title a {
+    height: 45px;
+    margin: 0 15px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*ebox*/
+.ebox {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 30px auto;
+}
+
+.ebox .wp-post {
+    width: 32%;
+}
+
+.ebox .post-head {
+    height: 33px;
+    border-bottom: 2px solid #0c7ed9;
+    margin-bottom: 7px;
+}
+
+.ebox .post-head .head-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 8px;
+    height: 55px;
+
+}
+
+.ebox .post-head .head-bar .post-more {
+    color: #fff;
+    background: #0c7ed9;
+    padding: 0px 4px;
+    align-self: flex-end;
+    margin-bottom: 2px;
+}
+
+.ebox .post-13 .post-head {
+    height: 55px;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/2.jpg) no-repeat left bottom;
+}
+
+.ebox .post-14 .post-head {
+    height: 55px;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/3.jpg) no-repeat left bottom;
+}
+
+.ebox .post-15 .post-head {
+    height: 55px;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/4.jpg) no-repeat left bottom;
+}
+
+
+.ebox .rili {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px dashed #ccc;
+    border-top: 1px solid #fff;
+}
+
+.ebox .rili .cont-1-sj {
+    width: 18%;
+}
+
+.ebox .rili .cont-1-sj .sudy-pubdate {
+    display: flex;
+    flex-direction: column;
+}
+
+.ebox .rili .cont-2 {
+    flex: 1;
+    margin-left: 5px;
+    line-height: 28px;
+    height: 56px;
+    overflow: hidden;
+}
+
+/**日历**/
+.sudy-pubdate {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #ececec;
+}
+
+.sudy-pubdate span {
+    display: block;
+    width: 100%;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sudy-pubdate span.pubdate-month {
+    height: 100%;
+    line-height: 23px;
+    color: #666666;
+    border-top: #cccccc 1px solid;
+    font-size: 14px;
+    text-align: center;
+}
+
+.sudy-pubdate span.pubdate-day {
+    height: 100%;
+    line-height: 36px;
+    color: #739ecc;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/11.png) right top no-repeat;
+    font-size: 30px;
+    text-align: center;
+}
+
+.neirong {
+    border-bottom: 1px dashed #ccc;
+}
+
+.biaoti {
+    padding-left: 0px;
+    font-size: 14px;
+    line-height: 45px;
+}
+
+.biaoti a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fbox{
+    margin-top: 30px;
+}
+
+.fbox .fbox_con {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.fbox .fbox_left {
+    width: 66%;
+}
+
+.fbox .fbox_right {
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.fbox .shipin_box {
+    background: #d5d4ce;
+    margin-bottom: 12px;
+}
+
+
+.fbox .shipin {
+    position: relative;
+}
+
+.fbox .player {
+    display: block;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/player.png) no-repeat;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 50%;
+    margin-top: -70px;
+    left: 50%;
+    margin-left: -35px;
+}
+
+
+.fbox .biaoti2 {
+    color: #414141;
+    height: 60px;
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 3%;
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fbox .biaoti2 .more {
+    align-self: flex-end;
+}
+
+
+.fbox .biaoti2 a {
+    color: #414141;
+}
+
+.fbox .biaoti2 a:hover {
+    color: #0C7ED9;
+}
+
+.shipin_box2 {
+    background: #d5d4ce;
+    padding: 25px 0;
+    width: 100%;
+    display: flex;
+}
+
+.shipin_box2 .sudy-scroll-wrap {
+    width: 792px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+}
+
+.shipin_box2 .scroll {
+    display: flex;
+    width: 630px;
+    height: 128px;
+    justify-content: space-between;
+}
+
+.shipin_box2 .scroll li {
+    width: 210px;
+    height: 128px;
+    position: relative;
+}
+
+.shipin_box2 .scroll_title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.shipin_box2 .scroll_title a {
+    padding: 7px 15px;
+    width: 100%;
+    display: block;
+    color: #fff;
+    text-align: left;
+}
+
+.shipin_box2 .scroll_play {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 50%;
+    top: 50%;
+    margin-left: -34px;
+    margin-top: -22px;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/player1.png) no-repeat;
+}
+
+.sudy-scroll-nav .nav-prev {
+    display: block;
+    width: 24px;
+    height: 45px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 18px;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    margin-top: -16px;
+    z-index: 100;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/left.png) no-repeat;
+    text-indent: -9999px;
+}
+
+.sudy-scroll-nav .nav-next {
+    display: block;
+    width: 24px;
+    height: 45px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 18px;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    margin-top: -16px;
+    z-index: 100;
+    background: url(https://www.scut.edu.cn/_upload/tpl/00/02/2/template2/images/right.png) no-repeat;
+    text-indent: -9999px;
+}
+
+.fbox_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fbox1 img {
+    width: 100%;
+    height: auto;
+}
+
+.fbox2 img {
+    width: 100%;
+    height: auto;
+}
+
+.gbox .links_box {
+    width: 1200px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hbox {
+    background: #ebebeb;
+}
+
+.hbox .hbox_navbar {
+    width: 1200px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 20px;
+    flex-wrap: nowrap;
+}
+
+.hbox .hbox_navbar .nav1 .wp_nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.hbox .title_nav {
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    height: 35px;
+}
+
+.hbox .nav1 {
+    font-size: 12px;
+    text-align: left;
+    line-height: 24px;
+}
+
+.hbox .nav-item a span.item-name {
+    color: #666666;
+}
+
+.nav_box .nav-item a span.item-name {
+    display: inline-block;
+    padding: 5px 10px;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+/* footer */
+/**底部**/
+.wp-footer {
+    background-color: #666666;
+}
+
+.wp-footer .wp-inner {
+    padding: 15px 0 15px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.wp-footer .wp-inner .footer {
+    color: #cbcbcb;
+    line-height: 24px;
+    font-size: 14px;
+    margin: 0 7px;
+    text-align: left;
+}
+
+.wp-footer .wp-inner .footer span {
+    margin: 15px 0px;
+    color: #fff;
+}
+
+.wp-footer .wp-inner .footer a {
+    color: #e9ef09;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+.wp-footer .wp-inner .footer a:hover {
+    text-decoration: underline;
+}
+
+.wp-footer .wp-inner .footer .icp a {
+    color: #b1b1b1;
+}
+
+.wp-footer .wp-inner .footer .icp,
+.wp-footer .wp-inner .footer .copyright {
+    color: #b1b1b1;
+}
+
+.icp,
+.copyright {
+    color: #b1b1b1;
+}

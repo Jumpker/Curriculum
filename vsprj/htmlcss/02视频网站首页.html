@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频网站首页</title>
+    <style>
+
+        /* 1 页面头部  */
+		.header{
+			position: fixed;   /* 固定在屏幕顶部 */
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			background: #fff;
+			padding-left: 5%;
+		}
+		.header img{
+			vertical-align: middle;   /* 图片垂直居中 */
+		}
+		.logo{
+			width: 82px;
+			height: 24px;
+			margin-right: 45%;   /* 设置logo与同行的另外两个图标间隔 */
+		}
+		.search,.userimg{
+			width: 24px;
+			height: 24px;
+			margin-left: 10px;
+		}
+
+        /* 2 轮播图 */
+		.bannerwrap{
+			margin-top: 50px;   /*距离顶端50px，避免被header盖住*/
+		}
+		.bannerwrap img{
+			width: 100%;
+		}
+
+        /* 3 分类 */
+		li{
+			list-style: none;  /* 去除list的项目符号 */
+		}
+
+        .classifywrap{
+			margin-top: 10px;
+			background: #fff;
+			padding-bottom: 5px;
+		}
+		.classify{
+			overflow: hidden;  /*如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为。*/
+            margin:0;
+			padding: 0;    /* 默认的ul 有padding值40px，导致li往右边偏移40px */
+		}
+		.classify li{
+			float: left;
+			width: 25%;
+			text-align: center;
+		}
+		.classify .list{
+			color: #7e8c8d;
+		}
+		.classify .icon{
+			display: inline-block;  /*?????!!!!!!!!!!!!*/
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 50%;   /* 圆框 */
+			background: #4a95dc;
+			font-size: 18px;
+			color: #fff;
+			margin: 10px 0;
+		}
+       
+		/* 4 课程模块 */
+		.coursewrap{
+			width: 100%;
+			background: #fff;
+			padding: 0 5%;
+			box-sizing: border-box;  /*默认为content-box，标准模型，改成怪异模型border-box，包括了padding的5%，令浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中*/
+			margin: 10px 0;
+		}
+		/* 4.1 热门视频*/
+		.hotwrap{
+			height: 50px;
+			line-height: 50px;
+		}
+		.hotwrap img{
+			width: 25px;
+			height: 25px;
+			vertical-align: text-bottom;  /*图片与文本底部对齐*/
+		}
+		.courselist{
+			overflow: hdden;   /*内容溢出不显示*/
+			margin-bottom: 92px;
+			padding: 0;    /* 默认的ul 有padding值40px，导致li往右边偏移40px */
+		}
+		.courselist li{
+			float: left;  /*浮动布局*/
+			width: 48%;
+			margin-bottom:10px;
+		}
+		/*海报*/
+		.courseposter{
+			width: 100%;
+			height: 120px;
+		}
+		.courseposter img{
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;  /*图片圆角*/
+		}
+		.coursetitle{
+			font-size: 13px;
+			color: #333;
+			margin-top: 5px;
+		}
+		.levelprice{
+			overflow: hidden;
+			margin-top: 5px;
+		}
+		.level{
+			float: left;
+			font-size: 12px;
+			color: #333;
+		}
+		.price{
+			float: right;
+			color: red;
+			font-size: 13px;
+		}
+		/*设置商品的基数行li  距离页面左边距4%*/  
+		/* .courselist li:nth-of-type(odd){
+			margin-left: 2%;
+		} */
+		/*设置商品的基数行li  距离页面左边距4%*/  
+		.courselist li:nth-of-type(odd){
+			margin-right: 4%;
+		}
+		.courselist li:nth-last-child(1),.courselist li:nth-last-child(2) {
+			margin-bottom: 120px;
+		}
+
+		/* 5 底部导航*/
+		#bottomnav{
+			position: fixed;  /*固定在页面底端*/
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+		.nav{
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+
+    </style>
+</head>
+<body>
+ 	<!--1 页面头部 -->
+     <div class="header">
+		<img class="logo" src="./img2/logo.png">
+		<img class="search" src="./img2/search.png">
+		<img class="userimg" src="./img2/userimg.png">
+    </div>
+    
+ 	<!--2 轮播图 -->
+     <div class="bannerwrap">
+		<img src="./img2/banner.jpeg">
+	</div>
+  
+	<!-- 3 分类 -->
+	<div class="classifywrap">
+		<ul class="classify">
+			<li>
+				<div class="icon">后</div>
+				<p class="list">后端</p>
+			</li>
+			<li>
+				<div class="icon">前</div>
+				<p class="list">前端</p>
+			</li>
+			<li>
+				<div class="icon">测</div>
+				<p class="list">测试</p>
+			</li>
+			<li>
+				<div class="icon">维</div>
+				<p class="list">运维</p>
+			</li>
+		</ul>
+	</div>
+
+	<!-- 4 课程模块 -->
+	<div class="coursewrap">
+		<div class="hotwrap">
+			<img src="./img2/hot.png">
+			热门视频
+		</div>
+		<ul class="courselist">
+			<li>
+				<div class="courseposter">
+					<img src="./img2/1.png">
+				</div>
+				<p class="coursetitle">Spring Boot 2.x零基础入门到高级实战教程</p>
+				<div class="levelprice">
+					<p class="level">级别：中级</p>
+					<p class="price">价钱：$29.8</p>
+				</div>
+			</li>
+			<li>
+				<div class="courseposter">
+					<img src="./img2/2.png">
+				</div>
+				<p class="coursetitle">vue2019全新单页面应用仿京东电商项目</p>
+				<div class="levelprice">
+					<p class="level">级别：中级</p>
+					<p class="price">价钱：$39.8</p>
+				</div>
+			</li>
+			<li>
+				<div class="courseposter">
+					<img src="./img2/2.png">
+				</div>
+				<p class="coursetitle">vue2019全新单页面应用仿京东电商项目</p>
+				<div class="levelprice">
+					<p class="level">级别：中级</p>
+					<p class="price">价钱：$29.8</p>
+				</div>
+			</li>
+			<li>
+				<div class="courseposter">
+					<img src="./img2/1.png">
+				</div>
+				<p class="coursetitle">Spring Boot 2.x零基础入门到高级实战教程</p>
+				<div class="levelprice">
+					<p class="level">级别：中级</p>
+					<p class="price">价钱：$29.8</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<!-- 底部导航 -->
+	<div class="classifywrap" id="bottomnav">
+		<ul class="classify">
+			<li>
+				<div class="icon"><img class="nav" src="./img2/1.png"></div>
+				<p class="list">首页</p>
+			</li>
+			<li>
+				<div class="icon"><img class="nav" src="./img2/2.png"></div>
+				<p class="list">课程</p>
+			</li>
+			<li>
+				<div class="icon"><img class="nav" src="./img2/1.png"></div>
+				<p class="list">购物车</p>
+			</li>
+			<li>
+				<div class="icon"><img class="nav" src="./img2/2.png"></div>
+				<p class="list">我的</p>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+{
+  "data": [{
+    "name": "家用电器",
+    "icon": "icon-leijiayongdianqix",
+    "subcate": [{
+      "subcate_title": "电视",
+      "subcate_con": ["超薄电视", "全面屏电视", "智能电视", "OLED电视", "曲面电视", "4K超清电视", "55英寸", "65英寸", "电视配件"]
+    }, {
+      "subcate_title": "空调",
+      "subcate_con": ["空调挂机", "空调柜机", "精选推荐", "中央空调", "移动空调", "省电空调", "变频空调", "以旧换新"]
+    }, {
+      "subcate_title": "洗衣机",
+      "subcate_con": ["滚筒洗衣机", "洗烘一体机", "波轮洗衣机", "迷你洗衣机", "烘干机", "洗衣机配件"]
+    }, {
+      "subcate_title": "冰箱",
+      "subcate_con": ["多门", "对开门", "三门", "双门", "冷柜/冰吧", "酒柜", "冰箱配件"]
+    }, {
+      "subcate_title": "厨卫大电",
+      "subcate_con": ["油烟机", "燃气灶", "烟灶套装", "集成灶", "消毒柜", "洗碗机", "电热水器", "燃气热水器", "空气能热水器", "太阳能热水器", "嵌入式厨电", "烟机灶具配件"]
+    }, {
+      "subcate_title": "厨房小电",
+      "subcate_con": ["破壁机", "电烤箱", "电饭煲", "电压力锅", "电炖锅", "豆浆机", "料理机", "咖啡机", "电饼铛", "榨汁机/原汁机", "电水壶/热水瓶", "微波炉", "多用途锅", "养生壶", "电磁炉", "面包机", "空气炸锅", "面条机", "电陶炉", "煮蛋器", "电烧烤炉"]
+    }, {
+      "subcate_title": "厨卫大电",
+      "subcate_con": ["油烟机", "燃气灶", "烟灶套装", "集成灶", "消毒柜", "洗碗机", "电热水器", "燃气热水器", "空气能热水器", "太阳能热水器", "嵌入式厨电", "烟机灶具配件"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "手机数码",
+    "icon": "icon-shouji",
+    "subcate": [{
+      "subcate_title": "手机通讯",
+      "subcate_con": ["手机", "游戏手机", "老人机", "对讲机"]
+    }, {
+      "subcate_title": "手机配件",
+      "subcate_con": ["手机壳", "贴膜", "手机储存卡", "数据线", "充电器", "手机耳机", "创意配件", "手机电池", "移动电源", "蓝牙耳机"]
+    }, {
+      "subcate_title": "摄影摄像",
+      "subcate_con": ["数码相机", "微单相机", "单反相机", "拍立得", "运动相机", "摄像机", "镜头"]
+    }, {
+      "subcate_title": "数码配件",
+      "subcate_con": ["储存卡", "三脚架", "相机包", "滤镜", "闪光灯", "读卡器", "电池/充电器"]
+    }, {
+      "subcate_title": "影音娱乐",
+      "subcate_con": ["耳机耳麦", "音箱音响", "智能音响", "收音机", "麦克风", "智能手环", "无人机"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "电脑办公",
+    "icon": "icon-diannao",
+    "subcate": [{
+      "subcate_title": "电脑整机",
+      "subcate_con": ["笔记本", "游戏本", "平板电脑", "平板电脑配件", "台式机", "一体机", "笔记本配件"]
+    }, {
+      "subcate_title": "电脑配件",
+      "subcate_con": ["显示器", "CPU", "主板", "显卡", "硬盘", "内存", "机箱", "电源", "散热器", "显示器支架", "声卡", "组装电脑", "SSD固态硬盘"]
+    }, {
+      "subcate_title": "外设产品",
+      "subcate_con": ["鼠标", "键盘", "键鼠套装", "U盘", "移动硬盘", "鼠标垫", "摄像头", "手写板", "电脑工具", "电脑清洁"]
+    }, {
+      "subcate_title": "游戏设备",
+      "subcate_con": ["游戏机", "游戏耳机", "手柄", "游戏软件", "游戏周边"]
+    }, {
+      "subcate_title": "办公设备",
+      "subcate_con": ["摄影机", "摄影配件", "多功能一体机", "打印机", "传真设备", "验钞机", "扫描设备", "复合机", "碎纸机", "考勤门禁", "收银机", "保险柜"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "家具厨具",
+    "icon": "icon-jiaju",
+    "subcate": [{
+      "subcate_title": "家纺",
+      "subcate_con": ["四件套", "被子", "枕芯", "毛巾浴巾", "蚊帐", "凉席", "地毯地垫", "抱枕靠垫", "被套", "坐垫", "沙发垫套"]
+    }, {
+      "subcate_title": "家具",
+      "subcate_con": ["电脑桌", "电视柜", "主茶几板", "办公柜", "进口", "沙发", "床", "床垫", "餐桌", "衣柜", "书架", "鞋柜", "电脑椅"]
+    }, {
+      "subcate_title": "厨具",
+      "subcate_con": ["水具酒具", "炒锅", "碗碟套装", "厨房配件", "刀剪菜板", "锅具套装", "茶具", "咖啡具", "保温杯", "烹饪锅具"]
+    }, {
+      "subcate_title": "灯具",
+      "subcate_con": ["吊灯", "台灯", "装饰灯", "LED灯", "落地灯"]
+    }, {
+      "subcate_title": "厨房卫浴",
+      "subcate_con": ["水槽", "龙头", "淋浴花洒", "马桶", "厨卫挂件", "浴室柜", "浴霸", "垃圾处理器"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "男装女装",
+    "icon": "icon-fuzhuang-tixue",
+    "subcate": [{
+      "subcate_title": "女装",
+      "subcate_con": ["连衣裙", "套装裙", "半身裙", "T恤", "衬衫", "卫衣", "西装", "风衣", "休闲裤", "牛仔裤", "短裤", "毛衣"]
+    }, {
+      "subcate_title": "男装",
+      "subcate_con": ["T恤", "牛仔裤", "休闲裤", "衬衫", "短裤", "POLO衫", "羽绒服", "夹克", "卫衣", "风衣", "毛衣", "羊毛衫", "西服"]
+    }, {
+      "subcate_title": "内衣",
+      "subcate_con": ["文胸", "睡衣", "男士内裤", "女士内裤", "休闲棉袜", "打底裤袜", "泳衣", "秋衣秋裤", "背心"]
+    }, {
+      "subcate_title": "配饰",
+      "subcate_con": ["太阳镜", "棒球帽", "围巾", "真皮手套", "口罩"]
+    }, {
+      "subcate_title": "童装",
+      "subcate_con": ["卫衣", "裤子", "外套", "衬衫", "裙子", "棉服", "马甲", "袜子"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "个户清洁",
+    "icon": "icon-qingjie",
+    "subcate": [{
+      "subcate_title": "面部护肤",
+      "subcate_con": ["礼盒", "美白", "防晒", "面膜", "洁面", "爽肤水", "精华", "眼霜", "乳液", "卸妆", "润唇膏"]
+    }, {
+      "subcate_title": "男士护肤",
+      "subcate_con": ["控油", "洁面", "乳液", "面膜", "爽肤水", "剃须", "精华", "防晒"]
+    }, {
+      "subcate_title": "洗发护发",
+      "subcate_con": ["洗发水", "护发素", "染发", "烫发", "假发", "美发工具", "洗护套装", "发膜"]
+    }, {
+      "subcate_title": "口腔护理",
+      "subcate_con": ["牙膏", "牙刷", "牙线", "漱口水", "牙粉"]
+    }, {
+      "subcate_title": "纸品清洗",
+      "subcate_con": ["抽纸", "卷纸", "湿巾", "厨房用纸", "洗衣液", "洗衣粉", "湿厕纸", "护理除菌"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "汽车",
+    "icon": "icon-qiche",
+    "subcate": [{
+      "subcate_title": "汽车车型",
+      "subcate_con": ["微型车", "小型车", "紧凑型车", "中型车", "中大型车", "豪华车", "MPV", "SUV", "跑车"]
+    }, {
+      "subcate_title": "维修保养",
+      "subcate_con": ["汽机油", "轮胎", "蓄电池", "雨刷", "刹车片", "车灯", "汽车玻璃", "减震器"]
+    }, {
+      "subcate_title": "汽车装饰",
+      "subcate_con": ["座垫座套", "方向盘套", "香水", "扶手箱", "挂件摆件", "踏板", "装饰灯", "车载支架"]
+    }, {
+      "subcate_title": "车载电器",
+      "subcate_con": ["行车记录仪", "车载充电器", "车机导航", "对讲电台", "汽车音响"]
+    }, {
+      "subcate_title": "美容清洗",
+      "subcate_con": ["洗车机", "洗车水枪", "玻璃水", "清洁剂", "车蜡", "汽车贴膜", "补漆笔", "洗车配件"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "零食美食",
+    "icon": "icon-lingshi",
+    "subcate": [{
+      "subcate_title": "新鲜水果",
+      "subcate_con": ["苹果", "橙子", "火龙果", "榴莲", "芒果", "椰子", "柚子", "车厘子", "百香果"]
+    }, {
+      "subcate_title": "海鲜水产",
+      "subcate_con": ["鱼类", "虾类", "蟹类", "海参", "鱿鱼", "三文鱼", "大闸蟹", "小龙虾"]
+    }, {
+      "subcate_title": "进口食品",
+      "subcate_con": ["牛奶", "巧克力", "饮料", "咖啡粉", "油", "饼干蛋糕", "冲调品", "方便食品"]
+    }, {
+      "subcate_title": "休闲食品",
+      "subcate_con": ["休闲零食", "膨化食品", "肉干", "蜜饯果干", "坚果炒货"]
+    }, {
+      "subcate_title": "饮料冲调",
+      "subcate_con": ["饮料", "牛奶酸奶", "咖啡奶茶", "蜂蜜", "成人奶粉", "绿茶", "养生茶", "花果茶"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "钟表珠宝",
+    "icon": "icon-leimucuzhubao",
+    "subcate": [{
+      "subcate_title": "珠宝首饰",
+      "subcate_con": ["黄金", "钻石", "翡翠玉石", "水晶玛瑙", "彩宝", "铂金", "珍珠", "发饰"]
+    }, {
+      "subcate_title": "奢侈品",
+      "subcate_con": ["箱包", "钱包", "服饰", "腰带", "饰品"]
+    }, {
+      "subcate_title": "钟表",
+      "subcate_con": ["欧密茄", "DW", "卡西欧", "天王", "闹钟", "挂钟", "西铁城", "国表"]
+    }, {
+      "subcate_title": "精选大牌",
+      "subcate_con": ["GUCCI", "施华洛世奇", "阿玛尼", "普拉达", "万宝龙"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }, {
+    "name": "图书文娱",
+    "icon": "icon-tushu",
+    "subcate": [{
+      "subcate_title": "文学",
+      "subcate_con": ["小说", "散文随笔", "青春文学", "动漫", "悬疑推理", "科幻", "武侠", "世界名著"]
+    }, {
+      "subcate_title": "艺术",
+      "subcate_con": ["绘画", "摄影", "音乐", "书法", "设计"]
+    }, {
+      "subcate_title": "科学技术",
+      "subcate_con": ["计算机与互联网", "科普", "建筑", "工业技术", "电子通讯", "医学", "科学与自然", "农林"]
+    }, {
+      "subcate_title": "电子书",
+      "subcate_con": ["小说", "文学", "经济管理", "传记", "社会科学"]
+    }],
+    "guesslike": [{
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }, {
+      "good_img": "/shop/img/good.jpg",
+      "name": "分布式无线路由器"
+    }]
+  }],
+  "code": 0,
+  "msg": "成功"
+}

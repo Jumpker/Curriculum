@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f9f7f8;
+  padding: 45px 0 64px 0;  /*设置内填充为45px，使得navbar不会沉在header的下面*/
+}
+
+ul {
+  list-style: none;  /*去掉ul列表的黑实心点*/
+}
+
+a {
+  text-decoration: none; /*去掉导航链接的下划横线*/
+}
+
+
+/* 顶部导航栏 */
+header{
+  position:fixed;  /* 固定悬浮在顶部 */
+  top: 0;          /* 距离顶部位置为0 */
+  width: 100%;
+  margin-bottom: 5px; 
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  height: 40px;
+  color: #000;
+}
+.navbar .navbar-left {
+  /* height: 40px; */
+  line-height: 40px;  /*设置line-height后，文字垂直居中*/
+}
+.navbar .nav-city {
+  font-size: 14px;
+  /* margin: 0 15px; */
+}
+
+ .icon-downarrow {
+  display: inline-block;  
+  width: 6px;
+  height: 6px;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transform: rotate(-45deg);           /*  通过将矩形旋转45度切掉一半来弄出下拉箭头 */
+  margin: 0 0 4px 6px;
+}
+
+.nav-search {
+  flex: 1;  
+   /*填满剩余空间  缩放比例：1 */
+  background: #f3f3f3;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px; 
+  padding: 0 26px; /*  将输入框placeholder文字往左移动26px */
+  margin: auto 0;  /* 将margin上下设为auto也可使输入框居中显示 */
+  /* margin: 5px 15px 0 0;  */ /* 上右下左  （40-30）/2=5   使输入框居中显示 */
+}
+
+.nav-search input {
+  display: block;
+  width: 100%;     /*将input占满父亲的空间*/
+  height: 100%;
+  background: transparent;
+  border: none;  /* 去除输入外边框 */
+  outline: none;  /*去除点击输入无激活红框*/
+  font-size: 14px;
+}
+
+/* 广告图 */
+.banner {
+  padding: 5px 10px;  /*图片四周留一下空白*/
+  background: #fff;
+}
+
+.banner img {
+  width: 100%;  /*图片适应页面大小，否则按实际图片大小显示*/
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)  /*图片边框阴影*/
+}
+
+/* 导航菜单 */
+.navlist {
+  background: #fff;
+  margin-top: 10px;  /*导航菜单与广告图的上边距*/
+  margin-bottom: 10px; /*导航菜单与附件拼团的下边距*/
+}
+
+.navlist ul {
+  display: flex;
+  flex-wrap: wrap;  /*换行*/
+}
+
+.navlist .nav-item {
+  flex: 0 0 20%;  /*不伸缩 不缩小 每个图标占总宽度的20%*/
+  text-align: center;  /*导航文字居中显示*/
+  padding: 10px 0;
+}
+
+.nav-item .nav-icon {  /*给导航图标加上圆形背景*/
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;   /*字体图标垂直居中*/
+  margin:0 auto 7px;  /*auto 导航圆形背景居中显示*/
+  border-radius: 50%;  /*圆形*/
+  background: #fd9d21;    
+  color: #fff;     /*字体图标颜色*/
+  font-size: 25px;  /*字体图标大小*/
+}
+
+.nav-item .nav-des {
+  color: #333;  /*字体颜色*/
+}
+
+
+/* 附件拼团 */
+.boxWrapper {
+  background: #fff;
+  padding: 10px;
+}
+.boxWrapper h4 {  /*标题*/
+  color: #333;
+  margin-bottom: 10px;  /*标题与图片的下边距*/
+}
+
+.box-list {
+  display: flex;
+  justify-content: space-between;  /*两端对齐*/
+}
+
+.box-list .box-item {
+  display: inline-block; /*内块级元素会排列在同一行*/
+  width: 49%;
+  text-align: center;  /*文字居中*/
+}
+
+.box-item img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.box-item .item-title {
+  font-size: 14px;
+  padding: 0 15px;
+  white-space: nowrap; /*强制在同一行内显示所有文本，直到文本结束或者遭遇 br 对象*/
+  text-overflow: ellipsis;  /*与white-space: nowrap; overflow: hidden;结合实现文本溢出显示省略号*/
+  overflow: hidden;
+}
+
+.box-item .price .strong {
+  font-size: 18px;
+  color: #f63;
+}
+
+.box-item .price .line-price {
+  font-size: 12px;
+  text-decoration: line-through;  /*中间横线效果*/
+  color: #666;
+}
+
+/* 猜你喜欢 */
+.guessLike {
+  background: #fff;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.guessLike .title {
+  text-align: center;
+  padding: 10px 0;    /* 注意与padding比较一下分割线的位置 */
+  border-bottom: 1px solid #ddd8ce;  /* 分割线 */
+  color: #666;
+}
+
+.guessLike .guessItem {
+  border-bottom: 1px solid #ddd8ce;  /* 分割线 */
+}
+
+.guessLike .guessItem:last-child {  /* 最后一项取消分割线 */
+  border-bottom: none;
+}
+
+.guessItem .item-href {
+  display: block;
+  padding: 15px 0;
+}
+
+.guessItem .item-box {
+  display: flex;
+}
+
+.guessItem .item-img {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+}
+.item-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.guessItem .item-des {
+  flex: 1;  /*沾满右边剩余空间*/
+  margin-left: 10px; /* 与左边图片间隔 */
+}
+
+.guessItem .item-name {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.guessItem .item-title {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.guessItem .price {
+  display: flex;
+  justify-content: space-between;  /*将价格和已售两端对齐  两个价格在左边，用span包在一起*/
+  align-items: baseline;          /*文本基线对齐*/
+  font-size: 14px;
+  color: #666;
+}
+
+.guessItem .price .strong {
+  font-size: 22px;
+  color: #ff0000;
+}
+
+.guessItem .price .strong::before {  /* 通过伪类价格前面加个人民币符号 */
+  content: '\A5';
+  font-size:14px;
+  color: #ff0000;
+  margin-right: 3px;
+}
+
+/* 底部菜单 */
+footer {
+  position: fixed;   /* 悬浮在底部 */
+  bottom: 0;         /* 距离底部距离为0 */
+  width: 100%;
+  background: #fff;
+}
+
+footer .nav-menu {
+  display: flex;
+  /* justify-content: space-between; */  /* 水平平均分布，可以不要 */
+}
+
+.nav-item {
+  flex: 1;   /* 三个菜单相同大小 */
+  text-align: center;
+  padding: 8px 0;
+}
+
+
+.nav-item a{
+  display: block;  /* 使得文字占满一整行 */
+  color: #333;
+}
+.nav-item a.active {
+  color: #f63;
+}
+
+.nav-item .iconfont2 {
+  display: block;        /* 使得图标占满一整行 inline则图标和文字在同一行*/
+  font-size: 24px;
+}
+
+.nav-item span {
+  font-size: 14px;  /* 图标字体大小 */
+}

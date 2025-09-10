@@ -1,0 +1,624 @@
+/* 初始化网页样式 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+}
+
+body {
+    line-height: 1;
+    font-size: 13px;
+    font-family: "Microsoft YaHei", "\u5b8b\u4f53", Tahoma, Geneva, sans-serif;
+    color: #333;
+}
+
+/* 公共样式*/
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+/**页面全局宽度**/
+.wrapper .inner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 头部 */
+#header {
+    background: #2271C0;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+.header .inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .inner {
+    height: 106px;
+    width: 1200px;
+    margin: 0 auto;
+    background: url(https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/by.png) no-repeat;
+}
+
+.header .searchbox{
+    display: flex;
+    align-items: center;
+}
+
+.searchbox input {
+    height: 30px;
+    /* vertical-align: middle; */
+    border: 0px;
+}
+
+.searchbox .search {
+    width: 32px;
+    height: 30px;
+    border: 0px;
+    background: #FFFFFF url(https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/sous.png) no-repeat center;
+    cursor: pointer;
+}
+
+
+/* 菜单导航条 */
+
+#nav .wp-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#nav .sub-menu {
+    display: none;
+}
+
+#nav .wp-menu .menu-item a.menu-link {
+    display: inline-block;
+    padding: 0 15px;
+    line-height: 44px;
+    color: #000;
+    font-size: 16px;
+}
+
+
+/* 内容1 */
+.main1 .con1_top{
+    display: flex;
+    align-items: center;
+    /* align-items:flex-end; */
+    justify-content: space-between;
+}
+
+.main1 .con1_bottom{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: stretch; */
+}
+
+/* .main1 .con1_top .more_btn {
+    height: 106px;
+    line-height: 106px;
+} */
+
+.main1 .tt .tit .title {
+    line-height: 106px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main1 .more_btn a {
+    font-size: 14px;
+    cursor: pointer;
+    color: #777;
+    /* margin: auto 0; */
+}
+
+.main1 .ml {
+    width: 36.66667%;
+    margin-bottom: 42px;
+}
+
+.main1 .mr {
+    /* width: 63%; */
+    flex: 1;
+    margin-top: -16px;
+}
+
+.main1 .ml .news_title a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #2271C0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+}
+
+.main1 .ml .news_text a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 14px;
+    line-height: 24px;
+    color: #888888;
+    max-height: 48px;
+}
+
+.main1 .mr  .news_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* height: 400px; */
+}
+
+.main1 .mr  .news_list li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 48%;
+}
+
+.main1 .mr .news_list li.news {
+    height: 93px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+/*去掉最后两个元素的横线*/
+.main1 .mr .news_list li.news:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+
+
+.main1 .mr .news_list li.news .news_date {
+    width: 39px;
+    height: 26px;
+    font-family: "Microsoft YaHei";
+    text-align: right;
+    vertical-align: middle;
+    line-height: 26px;
+    padding: 10px 0 6px;
+}
+
+.main1 .mr li.news .news_date .news_year {
+    font-size: 14px;
+    color: #777777;
+    font-weight: normal;
+}
+
+.main1 .mr li.news .news_wz {
+    width: 80%;
+}
+
+.main1 .mr li.news .news_title {
+    width: 100%;
+    line-height: 34px;
+    margin-top: 0px;
+    font-size: 14px;
+    color: #000;
+}
+
+.main1 .mr li.news .news_title a{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    line-height: 26px;
+}
+
+.main1 .mr li.news .news_text a {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: #888;
+    font-size: 12px;
+    line-height: 20px;
+    max-height: 48px;
+}
+
+
+/* 内容2 */
+.main2 {
+    padding-top: 37px;
+    background: #f3f3f3;
+    padding-bottom: 39px;
+}
+
+.main2 .mod{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main2 .ml {
+    width: 47.33%;
+    vertical-align: top;
+}
+
+.main2 .mr {
+    width: 47.40%;
+}
+
+.main2 .tt{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.main2 .tt .tit .title {
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main2 .post .more_btn {
+    /* margin-top: 0px; */
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.main2 .news_list li.news {
+    display: flex;
+    justify-content: space-between;
+    line-height: 43px;
+}
+
+.main2 .news_list li.news span.news_title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 85%;
+    white-space: nowrap;
+}
+
+.main2 .news_list li.news span.news_meta {
+    margin-left: 2px;
+    font-size: 16px;
+    color: #777777;
+}
+
+.main2 .news_list li.news span.news_title a {
+    font-size: 16px;
+}
+
+
+/* 内容3 */
+.main3 {
+    padding-bottom: 39px;
+}
+
+.main3 .mod{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.main3 .ml {
+    width: 60%;
+}
+
+.main3 .mr {
+    width: 32%;
+}
+
+.main3 .tt {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.main3 .tt .tit .title {
+    line-height: 100px;
+    height: 88px;
+    display: block;
+    padding-left: 7px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main3 .post .more_btn {
+    height: 88px;
+    line-height: 88px;
+    cursor: pointer;
+    display: block;
+}
+
+.main3 .ml-con3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main3 .ml-con3-ml {
+    width: 45%;
+}
+
+.main3 .ml-con3-mr {
+    width: 53%;
+}
+
+.main3 .dtjt9_div_text {
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    right: 0px;
+    bottom: -15px;
+    z-index: 150;
+}
+
+.main3 .dtjt9_div_text .dtjt9_div_text_title {
+    background: #eee;
+    text-align: center;
+    height: 35px;
+}
+
+.main3 .dtjt9_div_text a {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #000;
+    text-decoration: none;
+}
+
+
+.main3 .ml .news_list li.news {
+    display: flex;
+    justify-content: space-between;
+    line-height: 34px;
+    padding-left: 0px;
+}
+
+
+.main3 .news_datee {
+    width:60px;
+    height: 28px;
+    line-height: 28px;
+    margin-top: 3px;
+    font-family: "Microsoft YaHei";
+    border-radius: 4px;
+    background: #3469a9 !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.main3 .news_wzz {
+    flex:1;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+
+.main3 span.news_yearr {
+    display: inline-block;
+    padding: 0 4px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.main3 span.news_dayss {
+    display: inline-block;
+    height: 26px;
+    padding: 0 6px;
+    font-size: 14px;
+    color: #3469a9;
+    border-radius: 0px 4px 4px 0px;
+    background: #fff;
+    vertical-align: top;
+    border: 1px solid #3469a9;
+}
+
+.main3 .ml .news_wzz .news_titlee {
+    font-size: 16px;
+    padding-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.main3 .mr .mr-con{
+    margin-top: -10px;
+}
+
+.main3 .mr .news .news_wz .news_title {
+    font-size: 16px;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 44px;
+    height: 44px;
+} 
+
+
+/* 内容4 */
+.main4 .inner {
+    padding: 0px 0 50px;
+}
+.main4 .news_list{
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.main4  div.news_imgs a{
+    height: 34px;
+    display: block;
+}
+
+.main4 .news_list li.news {
+    line-height: 34px;
+    padding-left: 0px;
+    width: 8.4%;
+}
+
+.main4 .news_list .news .news_box.clearfix {
+    text-align: center;
+    background: url(https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/l_bg.png) no-repeat right top;
+}
+
+.main4 .news_list .news:nth-last-child(1) .news_box.clearfix {
+background: none;
+}
+
+.main4 .news_list li.news {
+    /* display: inline-block; */
+    line-height: 34px;
+    padding-left: 0px;
+}
+
+/* 内容6 */
+.main6 {
+    background: #f5f5f5;
+}
+
+.main6 ul.news_list{
+ width: 100;
+ display: flex;
+}
+.news_tu .news_list li.news {
+    width: 25%;
+}
+
+.main6 #wp_news_w61 {
+    position: relative;
+    border: 1px red thick;
+    overflow: hidden;
+}
+
+.main6 .slick-prev {
+    left: 2px;
+    background: url(https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/slide_next.png) -18px -14px no-repeat #000;
+    height: 30px;
+}
+
+.main6 .slick-next {
+    right: 2px;
+    background: url(https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/slide_next.png) -78px -14px no-repeat #000;
+    height: 30px;
+}
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    display: block;
+    height: 20px;
+    width: 20px;
+    line-height: 0;
+    font-size: 0;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+
+/**页脚开始**/
+#footer {
+    background: #2271C0;
+}
+
+#footer .mod{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#footer .inner .foot-left {
+    width: 38%;
+}
+
+#footer .inner .foot-mod {
+    width: 42%;
+    margin-top: 15px;
+}
+
+#footer .inner .foot-right {
+    margin-top: 14px;
+    width: 20%;
+}
+
+#footer .link-items {
+    display: none;
+}
+
+#footer .inner p {
+    font-size: 12px;
+    line-height: 21px;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+}
+
+#footer .inner p span {
+    margin: 0 3px;
+}
+
+#footer .inner .copyright a {
+    color: #eee;
+}
+
+.botlinks .links-wrap {
+    display: inline-block;
+    margin: 0 0 18px 0;
+    width: 100%;
+    line-height: 30px;
+    background: #fff;
+}
+
+#footer .foot-right{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#footer .foot-right .shares ul{
+    display: flex;
+    flex-direction: row;
+   justify-content: flex-end;
+}
+
+.shares li {
+    margin: 0 6px;
+}
+
+.shares li a {
+    display: inline-block;
+    width: 27px;
+    height: 23px;
+    border: 0px solid red;
+    filter: Alpha(opacity=60);
+    vertical-align: top;
+}
+
+.shares li.i1 a {
+    background: url('https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/weixin.png') no-repeat;
+}
+
+.shares li.i2 a {
+    background: url('https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/weibo.png') no-repeat;
+}
+
+.shares li.i3 a {
+    background: url('https://www.gwng.edu.cn/_upload/tpl/01/48/328/template328/images/youxiang.png') no-repeat;
+}

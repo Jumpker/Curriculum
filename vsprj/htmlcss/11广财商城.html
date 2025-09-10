@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广财商城</title>
+    <link rel="stylesheet" href="/shop/iconfont.css">
+    <link rel="stylesheet/less" type="text/css" href="./11广财商城.less" />
+    <script src="/vue.global.js"></script>
+    <script src="/axios.min.js"></script>
+    <script src="/less.js" ></script>
+</head>
+<body>
+  <div id="app">
+      <!-- 头部导航条 -->
+      <div class="top-nav">
+          <div class="w">
+              <div class="login">
+                  <a href="#" class="h">您好，请登录</a>
+                  <a href="#">免费注册</a>
+              </div>
+              <ul class="nav-list">
+                  <li>
+                      <a href="#" class="link">我的订单</a>
+                  </li>
+                  <li>
+                      <a href="#" class="link">购物车</a>
+                  </li>
+                  <li>
+                      <a href="#" class="link">收藏夹</a>
+                  </li>
+                  <li>
+                      <a href="#" class="link">联系客服</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- 搜索框 -->
+      <div id="search" class="searchWrap">
+          <div class="w">
+              <a href="#" class="logo">广财商城</a>
+              <div class="search-box">
+                  <input class="searchInput" type="text" id="searchInput"
+                         placeholder="请输入商品名称" @blur="search_suggest_display='none'"
+                         @focus="search_suggest_display= searchInput.length>0 && suggest.length>0? 'block': 'none'"
+                         @keyup="getSuggest()" v-model="searchInput">
+                  <button class="search-btn">搜索</button>
+                  <ul id="search-suggest" class="search-suggest" :style="{display:search_suggest_display}">
+                      <li v-for="item in suggest">{{item.suggestname}}</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <!-- 商品分类 -->
+      <div class="w menu ">
+          <div class="aside-nav">
+              <ul class="nav-list">
+                  <li class="list-item" v-for="item in menu">
+                      <a href="#" class="item-href"><span class="iconfont" :class="item.icon"></span>{{item.name}}</a>
+                      <!--一级菜单 -->
+                      <div class="item-menu">
+                          <div class="item-menu-inner">
+                              <div class="subcate">
+                                  <dl class="subcate_item" v-for="subcate in item.subcate">
+                                      <dt class="subcate_title">
+                                          <!-- 二级菜单 -->
+                                          <a href="#" class="subcate_link">{{subcate.subcate_title}}<i
+                                                  class="iconfont subcate_title_arrow"> &gt; </i></a>
+                                      </dt>
+                                      <dd class="subcate_con">
+                                          <!-- 三级级菜单 -->
+                                          <a href="#" class="subcate_con_lk"
+                                             v-for="con in subcate.subcate_con">{{con}}</a>
+                                  </dl>
+                              </div>
+                              <div class="guessLike">
+                                  <h3>猜你喜欢</h3>
+                                  <ul class="like_list">
+                                      <li class="like_item" v-for="like_item in item.guesslike">
+                                          <a href="#" class="like_lk">
+                                              <img :src="like_item.good_img" alt="">
+                                              <p>{{like_item.name}}</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+
+          <!-- 轮播图 -->
+          <div class="banner-wrap">
+              <div class="banner">
+                  <ul id="swiper" @mouseover="stopswiper()" @mouseout="startswiper()">
+                      <li class="swiper-item" ref="banner"
+                          :style="{ opacity: swiper_item.opacity,transform:`translateX(`+(-index*970)+`px)` }"
+                          v-for="(swiper_item,index) in swiper">
+                          <a href="#"><img :src="swiper_item.banner_img" alt=""></a>
+                      </li>
+                  </ul>
+                  <div class="prev swiper-arrow" @click="changeImg(-1)"> &lt; </div>
+                  <div class="next swiper-arrow"  @click="changeImg(+1)"> &gt; </div>
+                  <div id="indicators" class="indicators">
+                      <div class="indicator" :class="{'on': swiper[index].opacity==1}" @click="setIndicatorOn(index)"
+                           v-for="(swiper_item,index) in swiper">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- 秒杀抢购 -->
+      <div id="miaosha" class="miaosha w">
+          <div class="miaosha-time">
+              <div class="ms_tit">秒杀抢购</div>
+              <div class="iconfont icon-alarm"></div>
+              <div class="ms_desc">本场距离结束还剩</div>
+              <div class="countdown">
+                   <div class="cd_item cd_hour">{{cd_hour}}</div>
+                  <div class="cd_item cd_minute">{{cd_minute}}</div>
+                  <div class="cd_item cd_second">{{cd_second}}</div>
+              </div>
+          </div>
+          <div id="miaoshaList" class="miaosha-list">
+              <div class="ms-item" v-for="item in ms.goods_list">
+                  <a href="#" class="ms-item-lk">
+                      <img :src="item.good_img" alt="" class="ms-item-img">
+                      <p class="ms-item-name">{{item.name}}</p>
+                      <div class="ms-item-buy">
+                            <span class="progress"><span class="progress-bar"
+                                                         :style="{width:item.progress+'%'}"></span></span>
+                          <span class="buy-num">已抢{{item.progress}}%</span>
+                      </div>
+                      <div class="ms-item-price">
+                          <span class="cm-price new-price">￥{{item.new_price}}</span>
+                          <span class="cm-price origin-price">￥{{item.old_price}}</span>
+                      </div>
+                  </a>
+              </div>
+
+              <!--
+              <div class="ms-item">
+                  <a href="#" class="ms-item-lk">
+                      <img src="img/good.jpg" alt="" class="ms-item-img">
+                      <p class="ms-item-name">分布式无线路由器</p>
+                      <div class="ms-item-buy">
+                          <span class="progress"><span class="progress-bar"></span></span>
+                          <span class="buy-num">已抢30%</span>
+                      </div>
+                      <div class="ms-item-price">
+                          <span class="cm-price new-price">￥549.00</span>
+                          <span class="cm-price origin-price">￥690.00</span>
+                      </div>
+                  </a>
+              </div>
+              -->
+          </div>
+      </div>
+
+      <!-- 热卖单品 -->
+      <div id="hotSale" class="hotSale w" ref="hotsale">
+          <h3 class="hotSale_tit">热卖单品</h3>
+          <ul id="hotSaleList" class="saleList">
+              <li class="bs-item item" v-for="item in hotsale">
+                  <a href="">
+                      <img :src="item.good_img" alt="" class="item-img">
+                      <p class="title">{{item.name}}</p>
+                      <div class="line-2">
+                          <span class="comment">评论<em>{{item.commentNum}}</em></span>
+                          <span class="collect">收藏<em>{{item.collectNum}}</em></span>
+                      </div>
+                      <div class="line-3">
+                            <span>
+                                <span class="strong">{{item.new_price}}</span>
+                                <span class="price-through">￥{{item.old_price}}</span>
+                            </span>
+                          <span class="sell">月销{{item.saleNum}}笔</span>
+                      </div>
+                  </a>
+              </li>
+
+              <!-- <li class="bs-item item">
+                  <a href="">
+                      <img src="img/good.jpg" alt="" class="item-img">
+                      <p class="title">分布式无线路由器11111111111111111111111111111111111111111</p>
+                      <div class="line-2">
+                          <span class="comment">评论<em>8888</em></span>
+                          <span class="collect">收藏<em>8888</em></span>
+                      </div>
+                      <div class="line-3">
+                          <span>
+                              <span class="strong">1100</span>
+                              <span class="price-through">￥2400</span>
+                          </span>
+                          <span class="sell">月销1000笔</span>
+                      </div>
+                  </a>
+              </li> -->
+          </ul>
+      </div>
+
+      <!-- 猜你喜欢 -->
+      <div id="guesslike" class="guesslike w">
+          <h3 class="guesslike_tit">猜你喜欢</h3>
+          <ul id="gl" class="saleList">
+              <li class="like-item item" v-for="item in guesslike">
+                  <div class="like-item-inner">
+                      <a href="">
+                          <img :src="item.good_img" alt="" class="item-img">
+                      </a>
+                      <p class="title">{{item.name}}</p>
+                      <div class="line-3">
+                          <span class="strong">{{item.new_price}}</span>
+                          <span class="sell">月销{{item.saleNum}}笔</span>
+                      </div>
+                      <a href="" class="item-more">发现更多相似的宝贝</a>
+                  </div>
+              </li>
+              <!-- <li class="like-item item">
+                  <div class="like-item-inner">
+                      <a href="">
+                          <img src="img/good.jpg" alt="" class="item-img">
+                      </a>
+                      <p class="title">分布式无线路由器</p>
+                      <div class="line-3">
+                          <span class="strong">1100</span>
+                          <span class="sell">月销3000笔</span>
+                      </div>
+                      <a href="" class="item-more">发现更多相似的宝贝</a>
+                  </div>
+              </li>
+              -->
+          </ul>
+          <div id="loadMore" class="loadMore"><span>加载更多</span></div>
+      </div>
+
+      <!-- 底部栏 -->
+      <div class="footer">
+          <div class="footer_container w">
+              <div class="footer_social">
+                  <a href="">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAmVBMVEUAAADrXVzqXVzsXVzrXVzrXVzqXFvrXVzrXFzrXFzrXFvsXVztXV3qXVzqXVzrXVzrXVzsXVzqXVzrXVzrXVzrXFvrXVztXl3sXV3sXFvqXFvrXVzrXVzrXVzrXV3rXVzsXl3sXl3sXFvsXVztW1vtXFvrXVzqXFzrXVzqXFvsXVzrXFvtXFvuW1vsXFzsXl3rXV3sWlnqXVwFstRJAAAAMnRSTlMAyfJk6OPTqFxTQTsx+M+bjHf12bCfhE5GFN/BvLeUfVZJLBoMBezEiW1fNyUdCnFrAybGT4MAAAEmSURBVCjPbZLZcoMwDEUvxmwhrAkEsidAs7RJW/3/x9VgA4XxeREzZyxZF2PgM3EMxmzntMCczYEGDHeiyjVNuH2NbvlBczaDIw2FdO+UdMjOe9KyhWBBE5zkbskvE4AxlZ6/REwtvPl3GxY9dqLs+EFZD6ferUvg2nareARqieAol3URHs4LO/IChF1SsNW5MZFgn2FFAgspyYoqDrmR+0KSIzdgCLr6hEfkHEWMD5T9/VPZgH5fFEDuVQ6bc8j/AZNcPzuLQhUKJUPkXb3W9H1i7cnjmGcGXwVZ8PvlbFMO5KRwoYZaF9/0TLdBsetdWgObfkKcPN04pIEEApu0sAaCl1766uXpnAnFRe8U19lca/qwf1aj4skbM7zjbcuYZURuDcUf0IRfo5ZkTFQAAAAASUVORK5CYII="
+                           alt="官方微博">
+                  </a>
+                  <a href="">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAA6lBMVEUAAABQt3RIvHRQtnVQtnRRtXRPtnRQtnRNuHFPuHVPt3RQtnRPt3NQtnRRtnRPt3RPtnRQtnRPuHVNuHNQtnJKvXJQtnRQtnRRtnNPtnRNvW9OuHZYtnJQtnRQuXJOt3ZNuXNPtnRWs3NPtnNPtnVPuHVOuHZLumpZrYRPt3ROt3NcrHFPuHNOtXJOuXFSs3hLu3ZStXxWsHQ+xXVKu21QuXJMuHJQtnNQt3VOt2k4y3dQt3RQtXUz0E5YrG1eqogu0kgx0ncz0XhDwWJUtXlQtnRRtnRQtnVTtHRRtnVWsXVbq3NTtHdcqoV/VWtCAAAARXRSTlMAOAPg8u/Y0HEM+va1sZV2Zl1PQBoG3cy+p1UqHuXMx8TDv6ugm4JeXVpFNTAlFOrg1LOxlYmHhXt4YGBTUUxLRkM0LhBCU+vDAAABTUlEQVQoz22S5ZrCMBBFb4WiVVp8cZd1d0sF2Pd/naVTo8D5k3ZO5pvvJkEMp9arGTE7eCzjEKPGYqp6Spkltodjd5uJW4gsjeu+R+57ww6x3S8Q+YLNjnA2LZJ9l51C8t083FrP6ZpS2evVAWRpRm0F4iEZccaDI9cBOBMom9ASa2BMsomlM8CvlwWyTiQVyP6yq+VzHPiZqmmKEMke6FNGwM903tpN6q9JVlDwlwxP7lNFwI1LVRRpZo5OY2qhfYf6NfiMt6sWITGyBg+sOOCVQ2MGjCgLZEYUAFjJXQz9QFWMg1zyiyDVRpE7p2FDlANJf24jdG3KqgMSWcJm96YvVSqJecAIJVmv0CtVSiU7TnC1ZSewg+wtl5267AWIt7/jvvUzQj6Yl3bueoKYpWQ7++4y/bBzAtuG7d7Fk4U0VuO2K4ii0FEmeYT8AzRaeyGGpXtyAAAAAElFTkSuQmCC"
+                           alt="官方公众号">
+                  </a>
+                  <a href="">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAz1BMVEUAAAAvpd4wpd0wpd4tpuAxqt4wpd4vpd4wqN0ppuImquUwpN0wpd4vpd8wpd0up98wpt4wpd0vpt0tpN8vqd4speMvpd0opeI0pdgvpt4vpd0rpOEwpd0xpd0wpd0sqeAqquIurOEtqN8upd4nqOUpqOIupOgsouAvoNsqp+E1qdovpd4wpd4vpd0xo90wpdkun9wvpt0vpd4imukgwewyouEemOwdme0to9wmqOQ5stwwpd0xpdwzpdsxpNwwpdwvpN03qtczp90yotw4mNeIn8/UAAAAO3RSTlMA8t/YTzfuz1wMBujiy8rEsKGSgHlCPSj++vbyvLWrlXBhVkUxGxTg1MPBp6aZmI6Jd2lgUUtDNC8hH6zWnXoAAAEaSURBVCjPbZLneoJQDIY/tgqyRKh71u69e8DR9v6vqQ+eEHq07y+SN0DyJGCsh2vf1pxx0sUh5lAwfkNRpyPxl+IiA2Npa6HaE7Nyb7tcHJB/vUrX7LOr2e4+UXJJTmVjlG6x5YRxEwe1LXt2OIzL2kcOPcDiYIQ999y5iQ7LdylbPbLFBCEXriDRKbMO4FX/b4O4E4SOXjV2XMmu2MiUDY1etFeocGjwPgySCTsewEVITxlqPOqCR7kaf9AoYeTKVISU17SkPQxyarEBGCQ7IDIpi0ETMKmwbabzoTNLFxF9aVpWnhfiP2x5QCyVZVvY8/xzfCbFE4gXcXRgMzBLQ3Vn6mFPdfFdrcpNWlBpzSeBrmm6f9togvgFmINuYDwpQKQAAAAASUVORK5CYII="
+                           alt="客服QQ">
+                  </a>
+              </div>
+              <ul class="footer_link">
+                  <li><a>关于我们</a></li>
+                  <li><a>联系我们</a></li>
+                  <li><a>帮助中心</a></li>
+                  <li><a>加入我们</a></li>
+                  <li><a>讲师合作</a></li>
+                  <li><a>友情链接</a></li>
+              </ul>
+              <div class="footer_copyright">Copyright © 2022 广东财经大学信息学院 </div>
+          </div>
+      </div>
+
+      <!-- 悬浮菜单 锚点 anchor-->  
+      <div class="tool">
+          <a href="a.html" class="tool-item1" :class="{on:tool_index==0}">秒杀<br>抢购</a>
+          <a href="#hotSale" class="tool-item2" :class="{on:tool_index==1}">热卖<br>单品</a>
+          <a href="#guesslike" class="tool-item3" :class="{on:tool_index==2}">猜你<br>喜欢</a>
+          <a id="goTop" class="tool-item4" :style="{display:goto_top_display}" @click="goTop()"><span class="top-arrow"></span>顶部</a>
+          <a class="tool-item5">反馈</a>
+      </div>
+
+  </div>
+
+  <script>
+
+
+      var vm=Vue.createApp({
+          data() {
+              return {
+                  menu: Array,
+                  ms: { goods_list: Array, ms_time: Number },
+                  hotsale:Object,
+                  guesslike:Object,
+                  swiper:Object,
+                  swiper_index: 0,
+                  swiper_timer: Object,  /* 轮播图定时器 */
+
+                  ms_timer:Object,
+                  cd_hour: "--",
+                  cd_minute: "--",
+                  cd_second: "--",
+
+                  tool_index: 0,  /* 右侧工具条位置 */
+                  goto_top_display: 'none',
+
+                  suggest: [],
+                  searchInput: '',
+                  search_suggest_display: 'none',
+
+              }
+          },
+          methods: {
+              async getMenuData() {
+                  let res=await axios.get('./shop/menu.json')
+                  console.log(res.data);
+                  this.menu = res.data.data;
+              },
+              async getSwiperData() {
+                  let res=await axios.get('./shop/swiper.json')
+                  console.log(res.data);
+                  this.swiper = res.data.data;
+                  //轮播图操作
+                  if (this.swiper.length > 0) this.swiper[0].opacity = 1;
+                  this.autoChange();
+
+              },
+
+              //获取秒杀专区数据
+              async getMsData() {
+               let res=await axios.get('./shop/miaosha.json');
+                  console.log(res.data);
+                  //this.ms.goods_list = res.data.data.goods_list;
+                  //this.ms.ms_time = res.data.data.ms_time;
+                  this.ms = res.data.data;
+                  this.countDown(this.ms.ms_time);
+                },
+              async getHotsaleData() {
+                  let res=await axios.get('./shop/hotsale.json')
+                  console.log(res.data);
+                  this.hotsale = res.data.data;
+              },
+              async getGuessLikeData() {
+                  let res=await axios.get('./shop/guesslike.json')
+                  console.log(res.data);
+                  this.guesslike = res.data.data;
+              },
+              async getSuggestData( query) {
+                  this.suggest=[];
+                  if (this.searchInput.length < 1) {
+                      this.search_suggest_display = 'none';
+                  } else {
+
+                      let res = await axios.get('./shop/suggest.json', {
+                          params: {
+                              qeruy: searchInput
+                          }
+                      });
+                      this.suggest = res.data.data;
+                      console.log(this.suggest);
+                      this.search_suggest_display = 'block';
+
+                  }
+              },
+            //拆分时间
+            splitTime(time) {
+                var hour = Math.floor(time / 60 / 60); //小时
+                var minutes = Math.floor(time / 60 % 60); //分钟
+                var seconds = Math.floor(time % 60); //秒
+                return [hour, minutes, seconds];
+            },
+
+              countDown(t){
+                  var ms_time = t;
+                  this.ms_timer = setInterval( ()=> {
+                      if (ms_time < 0) {
+                          clearInterval(this.ms_timer);
+                          this.cd_hour = "--";
+                          this.cd_minute = "--";
+                          this.cd_second = "--";
+                      } else {
+                        //将时间拆分成时分秒
+                        let time_array=[ Math.floor(ms_time / 60 / 60),Math.floor(ms_time / 60 % 60),Math.floor(ms_time % 60)];
+                        // 格式化时间，小与10，拼接0
+                        [this.cd_hour,this.cd_minute,this.cd_second]=time_array.map(v=>v<10? v="0"+v:v);
+                        // [this.cd_hour,this.cd_minute,this.cd_second]=time_array
+                        //   let {hour, minutes, seconds}=this.calTime(ms_time);
+                        //   this.cd_hour = this.formatTime(hour);
+                        //   this.cd_minute = this.formatTime(minutes);
+                        //   this.cd_second = this.formatTime(seconds);
+                          ms_time--;
+                      }
+                  }, 1000);
+
+              },
+              //返回顶部
+              goTop: function () {
+                  var topTimer = setInterval(function () {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      var iSpeed = Math.floor(-scrollTop / 8);
+                      if (scrollTop == 0) {
+                          clearInterval(topTimer);
+                      }
+                      document.documentElement.scrollTop = document.body.scrollTop = scrollTop + iSpeed;
+                  }, 30)
+
+              },
+              //点击左右按钮，切换更换图片
+              changeImg: function (dir) {
+                  // console.log(dir);
+                  // console.log(this.swiper_index);
+                  clearInterval(this.swiper_timer);
+                  this.swiper[this.swiper_index].opacity = 0;
+                  this.swiper_index = (this.swiper.length + this.swiper_index + dir) % this.swiper.length;
+                  this.swiper[this.swiper_index].opacity = 1;
+                  // console.log(this.swiper_index);
+              },
+              //设置圆点激活状态s_index,切换轮播图片到指定图片
+              setIndicatorOn: function (s_index) {
+                  console.log(s_index);
+                  clearInterval(this.swiper_timer);
+                  this.swiper[this.swiper_index].opacity = 0;
+                  this.swiper_index = s_index;
+                  this.swiper[this.swiper_index].opacity = 1;
+              },
+              //自动播放
+            autoChange: function () {
+                  this.swiper_timer = setInterval( ()=> {
+                      console.log("swiper_index",this.swiper_index)
+                      var n_index = (this.swiper_index + 1) % this.swiper.length;
+                      this.swiper[this.swiper_index].opacity = 0;
+                      this.swiper_index = n_index;
+                      this.swiper[this.swiper_index].opacity = 1;
+                  }, 3000);
+              },
+
+              //鼠标经过停止播放
+              stopswiper: function () {
+                  clearInterval(this.swiper_timer);
+              },
+              //鼠标移出后自动播放
+              startswiper: function () {
+                  this.autoChange();
+              },
+              getSuggest: function () {
+                  debounce(this.getSuggestData(this.searchInput), 500);
+              },
+
+
+          },
+          mounted(){
+              this.getMenuData();
+              this.getMsData();
+              this.getHotsaleData();
+              this.getGuessLikeData();
+              this.getSwiperData();
+          }
+      }).mount('#app');
+
+      //防抖函数
+      function debounce(fn, delay) {
+          var handle;
+          return function () {
+              clearTimeout(handle);
+              handle = setTimeout(function () {
+                  fn();
+              }, delay)
+          }
+      }
+
+
+      window.onscroll = function () {
+          // scrollShowBtn();
+          var winPos = document.documentElement.scrollTop || document.body.scrollTop;//获取滚动的距离
+          // var hotSale = document.getElementById("hotsale");//获取热卖专区元素
+          var hotSale = vm.$refs.hotsale;
+          var hotHeight = hotSale.offsetTop + hotSale.offsetHeight;//猜你喜欢之前的总高度
+
+          //滚动一定距离显示返回顶部按钮
+          var top = document.documentElement.scrollTop || document.body.scrollTop;
+          vm.goto_top_display = top > 300 ? 'block' : 'none';
+
+          //添加菜单激活状态
+          if (winPos < hotSale.offsetTop) {
+              vm.tool_index = 0;
+          } else if (winPos >= hotSale.offsetTop && winPos < hotHeight) {
+              vm.tool_index = 1;
+          } else {
+              vm.tool_index = 2;
+          }
+      }
+
+  </script>
+</body>
+</html>

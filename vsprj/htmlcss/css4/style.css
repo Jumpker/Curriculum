@@ -1,0 +1,407 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+#head-top {
+  display: flex;
+  justify-content:space-around;
+  background: #3e8b94;
+  height: 40px;
+  line-height: 40px;
+  color: #000;
+}
+
+#head-top ul {
+  display: flex;
+  list-style: none;  /*去掉ul列表的黑实心点*/ 
+}
+#head-top li {
+  margin-right: 10px;
+}
+
+
+
+#header{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;     /* 垂直居中 */
+  background: url(http://www.gdufe.edu.cn/_upload/tpl/00/6f/111/template111/images/head_bg.jpg) center top;
+}
+
+#header #head-right{
+  /* margin: auto,0; */
+  display: flex;
+}
+
+#search-box{
+  display: flex;
+  align-items: center;     /* 垂直居中 */
+}
+
+
+#nav {
+  background: #005E60;
+  height: 45px;
+  line-height: 45px;
+
+}
+#nav ul{
+  display: flex;
+  list-style: none;  /*去掉ul列表的黑实心点*/ 
+  justify-content: space-around;
+}
+
+#nav ul a{
+  color:#fff;
+}
+
+#banner{
+  /*传统的方法让图片在div居中*/
+  /* text-align:center;   */
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#banner img{
+  width: 1100px;
+  height:370px;
+}
+
+#main{
+  display: flex;
+  width: 1100px;
+  justify-content: space-between;
+  margin: 0 auto;
+  /* background-color: #333; */
+  /* border: 1px solid red; */
+}
+#main ul {
+  display: flex;
+  list-style: none;  /*去掉ul列表的黑实心点*/ 
+}
+
+#main #m-left{
+  width:55%;
+  /* border: 1px solid red; */
+}
+#main #m-right{
+  width:40%;
+  /* border: 1px solid red; */
+}
+
+#m-left .tt {
+  display: flex;
+  justify-content:space-between;
+  border-bottom: 2px solid #f6810d;
+}
+
+#wp_news_w11{
+  display: flex;
+  margin-top: 20px;
+}
+
+
+#wp_news_w11  img {
+  width: 270px;
+  /* height: 185px; */
+}
+
+#wp_news_w11 .news_title{
+  line-height: 25px;
+  padding-left: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #00707a;
+  height: 54px;
+  text-align: center;
+}
+
+#wp_news_w11 .news_title a{
+  color: #fff;
+}
+
+/*文本超出多行就显示...*/
+/*https://www.cnblogs.com/wuliujun521/p/11359807.html*/
+#wp_news_w11 .news_text {
+  display:-webkit-box;
+  line-height: 26px;
+  padding: 15px 5px 0 5px;
+  font-size: 14px;
+  color: #817d7d;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient:vertical;
+  overflow: hidden;
+}
+
+#wp_news_w12 ul{
+  display: flex;
+  flex-direction: column;
+}
+
+#wp_news_w12 ul li{
+  display: flex;
+  line-height: 35px;
+  font-size: 15;
+  justify-content: space-between;
+}
+
+#wp_news_w21{
+  margin-top: 20px;
+}
+
+#m-right .tt{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #f6810d;
+}
+
+
+#m-right .con_rili{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0e5;
+}
+
+#m-right .con_rili .news_date {
+  width: 64px;
+  height: 54px;
+  margin-right: 20px;
+  background: #EDB700;
+  text-align: center;
+}
+
+
+#m-right .con_rili  .news_days {
+  font-size: 25px;
+  color: #000;
+  line-height: 30px;
+}
+
+#m-right .con_rili  .news_wz {
+  align-items: center;
+  height: 54px;
+  margin-right: 20px;
+
+}
+
+#m-right ul{
+  display: flex;
+  flex-direction: column;
+}
+
+#m-right ul li{
+  display: flex;
+  line-height: 35px;
+  font-size: 15;
+  justify-content: space-between;
+}
+
+#m-right .news_title{
+  width: 75%;
+  /* height: 35px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+#mr-media .con_rili{
+  margin-top: 20px;
+}
+
+
+
+#main2{
+  display: flex;
+  width: 1100px;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: #333; */
+  /* border: 1px solid red; */
+}
+
+#main2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#main2>.i1,#main2>.i2,#main2>.i3,#main2>.i4{
+  display: flex;
+  width: 24%;
+  flex-direction: column;
+}
+
+/* #main2  .i1 a, #main2  .i2 a,
+#main2  .i3 a, #main2  .i4 a*/
+#main2 a
+{
+  display:inline-flex;
+  flex-direction: row;
+  align-items: center; /*让图标右边的文本垂直居中*/
+  margin-bottom: 8px;
+  padding-left: 58px;
+  font-size: 18px;
+  text-align: left;
+  text-decoration: none;
+  background-color: #f0f0e5;
+}
+
+#main2 .icon {
+  width: 46px;
+  height: 50px;
+  margin-top: 14px;
+  margin-bottom: 13px;
+  background: url(http://www.gdufe.edu.cn/_upload/tpl/00/6f/111/template111/images/icon.png) no-repeat;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+#main2 .i2 .iconcon.i1 {
+  background-color: #00707a;
+  color: #fff;
+}
+
+#main2 .i4 .iconcon.i2 {
+  background-color: #e19e35;
+  color: #fff;
+}
+
+#main2 .i1 .iconcon.i1 .icon {
+  background-position: -21px -12px;
+}
+#main2 .i1 .iconcon.i2 .icon {
+  background-position: -140px -11px;
+}
+#main2 .i1 .iconcon.i3 .icon {
+  background-position: -259px -10px;
+}
+
+#main2 .i2 .iconcon.i1 .icon {
+  width: 95px;
+  height: 92px;
+  margin-top: 14px;
+  margin-bottom: 13px;
+  background-position: -980px -11px;
+}
+
+#main2 .i2 .iconcon.i2 .icon {
+  background-position: -391px -12px;
+}
+
+#main2 .i3 .iconcon.i1 .icon {
+  background-position: -519px -14px;
+}
+
+#main2 .i3 .iconcon.i2 .icon {
+  background-position: -647px -14px;
+}
+
+#main2 .i3 .iconcon.i3 .icon {
+  background-position: -765px -14px;
+}
+
+#main2 .i4 .iconcon.i1 .icon {
+  background-position: -878px -14px;
+}
+
+#main2 .i4 .iconcon.i2 .icon {
+  width: 95px;
+  height: 92px;
+  margin-top: 14px;
+  margin-bottom: 13px;
+  background-position: -1098px -6px;
+}
+
+
+#main3{
+  /* display: flex; */
+  width: 1100px;
+  /* justify-content: space-between; */
+  margin: 0 auto;
+  padding-bottom: 58px;
+  padding-top:58px;
+  /* background-color: #333; */
+  /* border: 1px solid red; */
+}
+
+#main3 .xblink{
+  display: flex;
+  list-style: none;
+  /* justify-content: space-between; */
+}
+
+
+#main3 .xblink li{
+  width: 20%;
+}
+#main3 .xblink li span a {
+  display: block;
+  width: 100%;
+  line-height: 88px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 2px 2px #000;
+}
+
+#main3 .xblink li.i1 {
+  background: #e19e35;
+}
+#main3 .xblink li.i2 {
+  background: #28828a;
+}
+#main3 .xblink li.i3 {
+  background: #7f307e;
+}
+#main3 .xblink li.i4 {
+  background: #566175;
+}
+#main3 .xblink li.i5 {
+  background: #363c6b;
+}
+
+
+footer{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  width: 1100px;
+  justify-content: space-between;
+  margin: 0 auto;
+  background: #016871 url(http://www.gdufe.edu.cn/_upload/tpl/00/6f/111/template111/images/foot_bg.jpg) no-repeat center center;
+}
+#footer p {
+  font-size: 13px;
+  line-height: 21px;
+  text-align: left;
+  color: #a3bdc0;
+}
+footer .foot-right{
+  display: flex;
+}
+
+footer .foot-right .share{
+  width:120px;
+}
+
+#sydw{
+  display:flex;
+  justify-content: center;
+  /* justify-content: space-around; */
+}
+
+body {
+  font-size: 14px;
+  font-family: "Arial","Microsoft YaHei","\u5b8b\u4f53", Tahoma, Geneva, sans-serif;
+  color: #333;
+  background: url(http://www.gdufe.edu.cn/_upload/tpl/00/6f/111/template111/images/main_bg.jpg) no-repeat center bottom;
+}

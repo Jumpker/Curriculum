@@ -1,0 +1,55 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.swiper {
+    height: 175px;
+  }
+  .swiper img {
+    width: 100%;
+    height: 100%;
+  }
+  /* 九宫格区域的样式 */
+  .grids {
+    height: calc(100vh - 175px);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:1px;
+    }
+  /* 九宫格区域中每一个格子的样式 */
+  .grids .item {
+    /* width: 125px;
+    height: 125px; */
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    /* box-sizing: border-box;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* .grids .item:nth-child(3) {
+    border-right: 0;
+  }
+  .grids .item:nth-child(6) {
+    border-right: 0;
+  }
+  .grids .item:nth-child(9) {
+    border-right: 0;
+  } */
+  /* 九宫格区域中每一个格子中的图片和文字的样式 */
+  .grids .item img {
+    width: 35px;
+    height: 35px;
+  }
+  .grids .item span {
+    color: #999;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .grids .item.item1{
+    grid-column: 1/3;
+    grid-row: 1/3;
+  }
+  

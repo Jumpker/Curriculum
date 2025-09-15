@@ -18,3 +18,7 @@ def HeapSort(arr):                     #堆排序
         arr[i], arr[0] = arr[0], arr[i]
         heapify(arr, i, 0)
     return arr
+
+#Time Complexity: O(nlogn)
+#Space Complexity: O(1)
+#Stability: N

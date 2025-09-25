@@ -4,21 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .header{
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet/less" href="1.less">
+    <script src="./less.js"></script>
 </head>
 <body>
     <!--1 页面头部 -->
     <div class="header">
 		<img class="logo" src="./img2/logo.png">
-        <span style="margin-right: 30px;">
+        <div>
             <img class="search" src="./img2/search.png">
             <img class="userimg" src="./img2/userimg.png">
-        </span>
+        </div>
     </div>
+
+    <!-- 底部固定 -->
+    <div class="footer">
+        <img class="logo" src="./img2/logo.png">
+        <div>
+            <img class="search" src="./img2/search.png">
+            <img class="userimg" src="./img2/userimg.png">
+        </div>
+    </div>
+
+ 	<!--2 轮播图 -->
+     <div class="bannerwrap">
+		<img src="./img2/banner.jpeg">
+	</div>
+
+        	<!-- 3 分类 -->
+	<div class="classifywrap">
+		<ul class="classify">
+			<li>
+				<div class="icon">后</div>
+				<p class="list">后端</p>
+			</li>
+			<li>
+				<div class="icon">前</div>
+				<p class="list">前端</p>
+			</li>
+			<li>
+				<div class="icon">测</div>
+				<p class="list">测试</p>
+			</li>
+			<li>
+				<div class="icon">维</div>
+				<p class="list">运维</p>
+			</li>
+		</ul>
+	</div>
+
+
 </body>
 </html>

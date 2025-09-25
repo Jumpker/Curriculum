@@ -1,0 +1,72 @@
+u1,
+li{
+    padding: 0;
+    list-style: none;
+}
+
+.header{
+    background-color: #4a95dc;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    background-color: #1eae7c;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 2 轮播图 */
+.bannerwrap{
+	margin-top: 50px;   /*距离顶端50px，避免被header盖住*/
+}
+.bannerwrap img{
+	width: 100%;
+}
+
+.classifywarp{
+    margin-top: 40px;
+}
+
+/* 3 分类 */
+li{
+	list-style: none;  /* 去除list的项目符号 */
+}
+
+.classifywrap{
+	margin-top: 10px;
+	background: #fff;
+	padding-bottom: 5px;
+}
+.classify{
+	overflow: hidden;  /*如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为。*/
+    margin:0;
+	padding: 0;    /* 默认的ul 有padding值40px，导致li往右边偏移40px */
+}
+.classify li{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.classify .list{
+	color: #7e8c8d;
+}
+.classify .icon{
+	display: inline-block;  /*?????!!!!!!!!!!!!*/
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;   /* 圆框 */
+	background: #4a95dc;
+	font-size: 18px;
+	color: #fff;
+	margin: 10px 0;
+}
+

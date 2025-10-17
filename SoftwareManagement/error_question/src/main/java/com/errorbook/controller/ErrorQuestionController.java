@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 错题控制器
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/error-questions")
 public class ErrorQuestionController {

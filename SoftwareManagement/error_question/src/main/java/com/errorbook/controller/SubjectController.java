@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * 学科控制器
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/subjects")
 public class SubjectController {

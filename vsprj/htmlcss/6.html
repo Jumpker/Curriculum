@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.global.js"></script>
+</head>
+<body>
+    <div id = "app">
+
+        <input type="text" v-model="task.name">
+        <input type="checkbox" v-model="task.status">
+        <button @click="add()">添加任务</button>
+
+        <ul>
+            <li v-for="it in todo">
+                {{it.name}}
+                <span style="color: green;" v-if="it.status">已完成</span>
+                <span style="color: red;" v-else>未完成</span> 
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    task:{name:"吃饭", status: true},
+                    todo: [{name: '起床', status: true},{name: '刷牙', status: false}],
+                }
+            },
+            methods:{
+                add(){
+                    if(this.task.name == ""){
+                        alert("请输入任务名称")
+                        return
+                    }
+                    this.todo.push({...this.task})
+                }
+            }
+        }).mount(app)
+    </script>
+</body>
+</html>

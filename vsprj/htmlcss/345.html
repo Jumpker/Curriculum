@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div :title="msg" :id="msg" :xxx="msg">  {{msg}}</div>
+        <button @click="count++">功德: {{count}}</button>
+        <input type="text" v-model="msg">
+        <input type="checkbox" v-model="status">  {{status}}
+        {{yw}}  {{yw>=60?'及格':'不及格'}}
+        <span id="11" v-if="yw>=60">及格</span>
+        <span id="22" v-else>不及格</span>
+        <ul>
+            <li v-for="(it,idx) in pets">{{idx+1}}   {{it}}</li>
+        </ul>
+    </div>
+
+    <script>
+        let app = Vue.createApp({         /*{}表示对象*/
+            data() {
+                return{
+                    msg: "hello vue",
+                    count:0,
+                    status: true,
+                    yw: 61,
+                    pets:["dog","cat"]
+                }
+            },
+            methods:{
+                name(){
+
+                }
+            },
+        }).mount("#app")        /*选择器，选择app*/
+    </script>
+
+</body>
+</html>

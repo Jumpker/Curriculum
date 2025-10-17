@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/error_question?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# OCR配置，这里使用百度OCR API作为示例
+ocr:
+  baidu:
+    app-id: 7113518
+    api-key: FlYkHK0rRvsEzgYsi38D1dMf
+    secret-key: l9yD7fmm9YgkgdVbLkz45A1FRh8PxGTr

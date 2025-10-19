@@ -1,0 +1,32 @@
+def BinarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    分治：二分查找，返回目标值的索引，如果不存在则返回-1
+    """
+    #左右指针
+    left = 0 
+    right = len(nums)-1
+
+    #进入分治循环
+    while(left <= right):
+        mid = int((left + right) / 2)
+        if(target < nums[mid]):         #目标在左边
+            right = int(mid - 1)
+        elif(target > nums[mid]):       #目标在右边
+            left = int(mid + 1)
+        elif(target == nums[mid]):      #找到目标
+            return mid
+    return -1                           #未找到目标
+
+
+if __name__ == '__main__':
+    print(BinarySearch([1,3,5,6], 5))   #测试，能找到，应返回2
+    print(BinarySearch([1,3,5,6], 6))   #测试，能找到，应返回3
+    print(BinarySearch([1,3,5,6], 1))   #测试，能找到，应返回0
+    print(BinarySearch([1,3,5,6], 2))   #测试，在数组界内找不到，应返回-1
+    print(BinarySearch([1,3,5,6], 7))   #测试，在数组右界外找不到，应返回-1
+    print(BinarySearch([1,3,5,6], 0))   #测试，在数组左界外找不到，应返回-1
+    print(BinarySearch([1], 1))         #测试，数组只有一个元素，能找到，应返回0
+    print(BinarySearch([], 1))          #测试，数组为空，应返回-1
